@@ -89,6 +89,306 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
 .policy-card ul{padding-left:1.2rem}.policy-note{max-width:900px;margin:1rem auto 0;text-align:center;color:var(--muted);font-size:.8rem}
 @media(max-width:650px){.policy-grid{grid-template-columns:1fr}.payment-price{align-items:flex-start;flex-direction:column;gap:.35rem}}
 
+
+/* ===== FORGE SERVERS V4 HERO ===== */
+.hero{
+  position:relative;
+  min-height:1120px;
+  display:block;
+  padding:clamp(5.5rem,9vw,8rem) clamp(1rem,6vw,6rem) 6rem;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 50% 52%,rgba(255,112,22,.16),transparent 24rem),
+    radial-gradient(circle at 50% 23%,rgba(255,185,77,.07),transparent 26rem),
+    linear-gradient(180deg,rgba(7,9,12,.12),rgba(7,9,12,.72));
+}
+.hero .grid{
+  opacity:.7;
+  mask-image:linear-gradient(to bottom,black 0%,black 74%,transparent 100%);
+}
+.hero .glow{
+  width:780px;
+  height:780px;
+  left:50%;
+  right:auto;
+  top:34%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,91,17,.24),rgba(255,122,26,.08) 32%,transparent 68%);
+  animation:heroGlowPulse 3.4s ease-in-out infinite;
+}
+.hero-stage{
+  position:relative;
+  z-index:3;
+  width:min(1100px,100%);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.hero .availability{
+  margin-top:.5rem;
+}
+.hero-kicker{
+  margin:1.7rem 0 1.15rem;
+}
+.forge-title{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:0;
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(3rem,8.4vw,7.4rem);
+  line-height:1.02;
+  letter-spacing:.025em;
+  color:#f7f7f7;
+  filter:drop-shadow(0 7px 0 #17191d) drop-shadow(0 0 24px rgba(255,121,26,.24));
+  animation:titleHover 4.6s ease-in-out infinite;
+}
+.forge-title span{
+  position:relative;
+  display:block;
+  color:transparent;
+  background:
+    linear-gradient(180deg,#fff7d5 0%,#ffc05b 22%,#ff7a1a 53%,#ba2e0c 82%,#6d1909 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-stroke:clamp(1px,.18vw,3px) rgba(32,21,15,.78);
+  text-shadow:
+    0 0 12px rgba(255,186,83,.24),
+    0 0 34px rgba(255,105,19,.26);
+  animation:titleHeat 2.8s ease-in-out infinite alternate;
+}
+.forge-title span:last-child{
+  margin-top:.18em;
+  animation-delay:.22s;
+}
+.forge-title::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:-1.4rem;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,#ffbd59,#ff681a,#ffbd59,transparent);
+  box-shadow:0 0 20px rgba(255,111,24,.72);
+  animation:forgeLine 2.4s ease-in-out infinite;
+}
+.hero-tagline{
+  max-width:660px;
+  margin:2.5rem auto 0;
+  color:#b2bbc7;
+  font-size:clamp(.98rem,1.8vw,1.17rem);
+  line-height:1.7;
+}
+.title-to-furnace-space{
+  height:clamp(6.5rem,12vh,10.5rem);
+  width:1px;
+}
+.hero-art{
+  min-height:0;
+  display:grid;
+  place-items:center;
+  position:relative;
+  z-index:3;
+}
+.hero .furnace{
+  width:min(335px,72vw);
+  animation:furnaceHover 3.7s ease-in-out infinite;
+}
+.hero .chimney{
+  position:relative;
+}
+.hero .body{
+  height:335px;
+}
+.hero .window{
+  height:137px;
+}
+.smoke{
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  top:-15px;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(198,205,215,.23),rgba(109,118,130,.08) 52%,transparent 72%);
+  filter:blur(4px);
+  opacity:0;
+  pointer-events:none;
+}
+.smoke-one{animation:smokeRise 4.8s linear infinite}
+.smoke-two{animation:smokeRise 4.8s 1.5s linear infinite}
+.smoke-three{animation:smokeRise 4.8s 3s linear infinite}
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:3.2rem;
+}
+.hero-trust{
+  width:min(900px,100%);
+  margin-top:2.4rem;
+}
+.ember-field{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  overflow:hidden;
+  pointer-events:none;
+}
+.ember{
+  position:absolute;
+  left:var(--x);
+  bottom:-25px;
+  width:var(--size);
+  height:var(--size);
+  border-radius:50%;
+  background:#ffb346;
+  box-shadow:0 0 8px #ff7a1a,0 0 17px rgba(255,79,16,.8);
+  opacity:0;
+  animation:emberRise var(--duration) var(--delay) linear infinite;
+}
+.scroll-cue{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:1.4rem;
+  transform:translateX(-50%);
+  width:28px;
+  height:46px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+}
+.scroll-cue span{
+  position:absolute;
+  left:50%;
+  top:8px;
+  width:4px;
+  height:9px;
+  border-radius:999px;
+  background:#ff9a39;
+  transform:translateX(-50%);
+  animation:scrollDot 1.8s ease-in-out infinite;
+}
+@keyframes titleHover{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-11px)}
+}
+@keyframes titleHeat{
+  from{filter:brightness(.92) saturate(.95)}
+  to{filter:brightness(1.16) saturate(1.18)}
+}
+@keyframes forgeLine{
+  0%,100%{transform:scaleX(.74);opacity:.55}
+  50%{transform:scaleX(1);opacity:1}
+}
+@keyframes heroGlowPulse{
+  0%,100%{opacity:.72;transform:translate(-50%,-50%) scale(.92)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
+}
+@keyframes furnaceHover{
+  0%,100%{transform:translateY(0) rotate(-.4deg)}
+  50%{transform:translateY(-15px) rotate(.4deg)}
+}
+@keyframes smokeRise{
+  0%{transform:translate(-50%,0) scale(.55);opacity:0}
+  12%{opacity:.25}
+  70%{opacity:.12}
+  100%{transform:translate(calc(-50% + 34px),-175px) scale(1.9);opacity:0}
+}
+@keyframes emberRise{
+  0%{transform:translate3d(0,0,0) scale(.45);opacity:0}
+  10%{opacity:.9}
+  70%{opacity:.5}
+  100%{transform:translate3d(var(--drift),-1050px,0) scale(1.15);opacity:0}
+}
+@keyframes scrollDot{
+  0%{transform:translate(-50%,0);opacity:0}
+  30%{opacity:1}
+  100%{transform:translate(-50%,20px);opacity:0}
+}
+@media(max-width:900px){
+  .hero{
+    min-height:1000px;
+    padding-top:5rem;
+  }
+  .title-to-furnace-space{
+    height:clamp(4.5rem,8vh,7rem);
+  }
+  .hero .furnace{
+    width:min(285px,72vw);
+  }
+  .hero .body{
+    height:285px;
+  }
+  .hero .window{
+    height:115px;
+  }
+}
+@media(max-width:600px){
+  .hero{
+    min-height:910px;
+    padding-bottom:5rem;
+  }
+  .forge-title{
+    font-size:clamp(2.35rem,12vw,3.7rem);
+    letter-spacing:0;
+  }
+  .hero-tagline{
+    margin-top:2rem;
+  }
+  .title-to-furnace-space{
+    height:4.2rem;
+  }
+  .hero .furnace{
+    width:225px;
+  }
+  .hero .chimney{
+    width:80px;
+    height:62px;
+  }
+  .hero .body{
+    height:225px;
+  }
+  .hero .window{
+    height:90px;
+  }
+  .hero-actions,
+  .hero-actions .btn{
+    width:100%;
+  }
+  .hero-trust{
+    grid-template-columns:1fr 1fr;
+  }
+  .scroll-cue{
+    display:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .forge-title,
+  .forge-title span,
+  .forge-title::after,
+  .hero .furnace,
+  .hero .glow,
+  .smoke,
+  .ember,
+  .scroll-cue span{
+    animation:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -102,34 +402,69 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
   <nav class="nav">
     <a href="#features">Features</a><a href="#plans">Server</a><a href="#faq">FAQ</a>
     <a href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Discord</a>
-    <a class="nav-cta pay-link" href="PAYMENT_LINK_HERE">Rent Server</a>
+    <a class="nav-cta" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Rent Server</a>
   </nav>
 </header>
 
 <main>
 <section class="hero" id="home">
-  <div class="grid"></div><div class="glow"></div>
-  <div class="hero-copy reveal">
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="ember-field" aria-hidden="true"></div>
+
+  <div class="hero-stage reveal">
     <div class="availability"><b></b> Current availability: 1 Minecraft server</div>
-    <p class="kicker">MINECRAFT SERVER RENTALS</p>
-    <h1>Forge Your<br><em>Perfect Server</em></h1>
-    <p class="lead">A simple Minecraft server rental service for friends, communities, and creators. Direct support, personal setup, and no confusing ordering process.</p>
-    <div class="actions">
-      <a class="btn primary pay-link" href="PAYMENT_LINK_HERE">Pay & Rent Server</a>
-      <a class="btn secondary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Talk on Discord</a>
+    <p class="kicker hero-kicker">MINECRAFT SERVER RENTALS</p>
+
+    <h1 class="forge-title" aria-label="Forge Servers">
+      <span>FORGE</span>
+      <span>SERVERS</span>
+    </h1>
+
+    <p class="hero-tagline">
+      Affordable Minecraft hosting forged for friends, creators, and small communities.
+    </p>
+
+    <div class="title-to-furnace-space" aria-hidden="true"></div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="furnace">
+        <div class="smoke smoke-one"></div>
+        <div class="smoke smoke-two"></div>
+        <div class="smoke smoke-three"></div>
+        <div class="chimney"></div>
+        <div class="body">
+          <i class="rivet r1"></i>
+          <i class="rivet r2"></i>
+          <i class="rivet r3"></i>
+          <i class="rivet r4"></i>
+          <div class="window">
+            <i class="flame f1"></i>
+            <i class="flame f2"></i>
+            <i class="flame f3"></i>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
     </div>
-    <div class="trust">
-      <div><strong>##</strong><span>Server RAM</span></div><div><strong>##</strong><span>Storage</span></div>
-      <div><strong>##</strong><span>CPU</span></div><div><strong>$5</strong><span>Monthly Beta Price</span></div>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Reserve on Discord</a>
+      <a class="btn secondary" href="#features">Explore Features</a>
+    </div>
+
+    <div class="trust hero-trust">
+      <div><strong>##</strong><span>Server RAM</span></div>
+      <div><strong>##</strong><span>Storage</span></div>
+      <div><strong>##</strong><span>CPU</span></div>
+      <div><strong>$5</strong><span>Monthly Beta Price</span></div>
     </div>
   </div>
 
-  <div class="hero-art reveal" aria-hidden="true">
-    <div class="furnace"><div class="chimney"></div><div class="body"><i class="rivet r1"></i><i class="rivet r2"></i><i class="rivet r3"></i><i class="rivet r4"></i>
-      <div class="window"><i class="flame f1"></i><i class="flame f2"></i><i class="flame f3"></i></div></div><div class="shadow"></div></div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span></span>
   </div>
 </section>
-
 <section class="section" id="features">
   <div class="heading reveal"><p class="kicker">WHY FORGE SERVERS</p><h2>Minecraft hosting without the headache</h2><p>Start with one server now and expand only when the business grows.</p></div>
   <div class="features">
@@ -152,17 +487,17 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
       <div><span>Storage</span><strong>## GB</strong></div><div><span>Player Slots</span><strong>##</strong></div>
       <div><span>Server Location</span><strong>##</strong></div><div><span>Setup Time</span><strong>##</strong></div>
     </div>
-    <a class="btn primary wide pay-link" href="PAYMENT_LINK_HERE">Pay & Rent This Server</a>
-    <p class="note">Beta price: $5/month. PayPal can be recurring; Cash App renewal is handled manually until automation is added.</p>
+    <a class="btn primary wide" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Reserve This Server</a>
+    <p class="note">Beta price: $5/month. Payment methods are being finalized. Do not send money until Forge Servers confirms availability on Discord.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="heading reveal"><p class="kicker">HOW IT WORKS</p><h2>From payment to playing</h2></div>
+  <div class="heading reveal"><p class="kicker">HOW IT WORKS</p><h2>From reservation to playing</h2></div>
   <div class="steps">
     <div class="step reveal"><span>01</span><h3>Review</h3><p>Check the available server and current specifications.</p></div>
-    <div class="step reveal"><span>02</span><h3>Pay</h3><p>Use the secure payment and rental link.</p></div>
-    <div class="step reveal"><span>03</span><h3>Discord</h3><p>Send your Minecraft version, player count, and setup needs.</p></div>
+    <div class="step reveal"><span>02</span><h3>Reserve</h3><p>Open Discord and request the available server.</p></div>
+    <div class="step reveal"><span>03</span><h3>Confirm</h3><p>Send your Minecraft version, player count, setup needs, and wait for confirmation.</p></div>
     <div class="step reveal"><span>04</span><h3>Play</h3><p>Receive your server connection information after setup.</p></div>
   </div>
 </section>
@@ -189,7 +524,7 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
     <article class="policy-card reveal">
       <h3>Service Terms</h3>
       <ul>
-        <li>The beta plan costs $5 per month and is paid in advance.</li>
+        <li>The beta plan is listed at $5 per month. Payment instructions are provided only after availability is confirmed on Discord.</li>
         <li>Service begins after payment is confirmed and setup details are received.</li>
         <li>Final performance depends on the server hardware, Minecraft version, mods, plugins, and player load.</li>
         <li>Forge Servers may schedule maintenance when required.</li>
@@ -199,7 +534,7 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
       <h3>Cancellation & Refunds</h3>
       <ul>
         <li>You may cancel before the next billing date.</li>
-        <li>Cash App customers must manually renew each month.</li>
+        <li>Renewal instructions will depend on the payment method chosen later.</li>
         <li>A refund may be issued if Forge Servers cannot provide the paid service.</li>
         <li>No refund is promised after setup and access have been delivered, except for unresolved service failure.</li>
       </ul>
@@ -218,7 +553,7 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
       <ul>
         <li>Only information needed for payment, setup, and support should be collected.</li>
         <li>Never send card numbers, passwords, or banking information through Discord.</li>
-        <li>Payment details are handled by the selected payment provider, not this website.</li>
+        <li>This website does not collect card or banking information.</li>
         <li>Customer information should not be sold or publicly shared.</li>
       </ul>
     </article>
@@ -228,44 +563,11 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
 
 <section class="section" id="contact">
   <div class="cta reveal"><div><p class="kicker">READY TO PLAY?</p><h2>Claim the available server</h2><p>Pay through the rental link, then contact Forge Servers on Discord with your Minecraft version and setup requirements.</p></div>
-    <div class="cta-buttons"><a class="btn primary pay-link" href="PAYMENT_LINK_HERE">Pay & Rent</a><a class="btn secondary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Open Discord</a></div>
+    <div class="cta-buttons"><a class="btn primary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Reserve on Discord</a><a class="btn secondary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Open Discord</a></div>
   </div>
 </section>
 </main>
 
-
-<div class="payment-modal" id="paymentModal" aria-hidden="true">
-  <div class="payment-backdrop" data-close-payment></div>
-  <div class="payment-panel" role="dialog" aria-modal="true" aria-labelledby="paymentTitle">
-    <button class="payment-close" data-close-payment aria-label="Close payment options">×</button>
-    <p class="kicker">CHOOSE PAYMENT METHOD</p>
-    <h2 id="paymentTitle">Rent Forge One</h2>
-    <p>Choose a payment method, then join Discord and send your Minecraft version, expected players, and setup requirements.</p>
-    <div class="payment-price">
-      <div><strong>$5.00</strong> <span>/ month</span></div>
-      <span>Beta launch plan · one server available</span>
-    </div>
-    <label class="agreement">
-      <input type="checkbox" id="agreePolicies">
-      <span>I agree to the <a href="#policies" data-close-payment>Service Terms, Refund Policy, Acceptable Use Policy, and Privacy notice</a>.</span>
-    </label>
-    <div class="method-grid">
-      <button class="method" type="button" data-payment="paypal">
-        <div><b>PayPal</b><span>Best option for an automatic monthly subscription.</span></div>
-        <div class="method-icon">🅿️</div>
-      </button>
-      <button class="method" type="button" data-payment="cashapp">
-        <div><b>Cash App</b><span>Manual $5 renewal each month until automated billing is added.</span></div>
-        <div class="method-icon">💵</div>
-      </button>
-      <a class="method" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">
-        <div><b>Ask Before Paying</b><span>Open Discord for setup or compatibility questions.</span></div>
-        <div class="method-icon">💬</div>
-      </a>
-    </div>
-    <p class="payment-warning">Forge Servers will never ask you to send card numbers, account passwords, or banking credentials through Discord.</p>
-  </div>
-</div>
 
 <footer>
   <a class="brand footer-brand" href="#home"><span>🔥</span><span>Forge Servers</span></a>
@@ -277,70 +579,40 @@ background:rgba(255,255,255,.025);border-radius:16px}.policy-card h3{margin-top:
 <script>
 const DISCORD_URL = "https://discord.gg/UD2HnnCfp";
 
-// Add the real checkout URLs here after they are created.
-const PAYPAL_URL = "PAYPAL_LINK_HERE";
-const CASHAPP_URL = "CASHAPP_LINK_HERE";
+document.querySelectorAll('a[href="https://discord.gg/UD2HnnCfp"]').forEach(link => {
+  link.setAttribute("target", "_blank");
+  link.setAttribute("rel", "noopener");
+});
 
-const modal = document.getElementById("paymentModal");
-const agreement = document.getElementById("agreePolicies");
 
-function openPaymentModal(event) {
-  if (event) event.preventDefault();
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+const emberField = document.querySelector(".ember-field");
+if (emberField) {
+  for (let i = 0; i < 34; i += 1) {
+    const ember = document.createElement("span");
+    ember.className = "ember";
+    ember.style.setProperty("--x", `${Math.random() * 100}%`);
+    ember.style.setProperty("--size", `${2 + Math.random() * 4}px`);
+    ember.style.setProperty("--duration", `${5.2 + Math.random() * 5.5}s`);
+    ember.style.setProperty("--delay", `${Math.random() * -10}s`);
+    ember.style.setProperty("--drift", `${-80 + Math.random() * 160}px`);
+    emberField.appendChild(ember);
+  }
 }
-
-function closePaymentModal() {
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-document.querySelectorAll(".pay-link").forEach(link => {
-  link.setAttribute("href", "#payment");
-  link.addEventListener("click", openPaymentModal);
-});
-
-document.querySelectorAll("[data-close-payment]").forEach(element => {
-  element.addEventListener("click", closePaymentModal);
-});
-
-document.querySelectorAll("[data-payment]").forEach(button => {
-  button.addEventListener("click", () => {
-    if (!agreement.checked) {
-      alert("Please agree to the Forge Servers policies before continuing.");
-      return;
-    }
-
-    const method = button.dataset.payment;
-    const url = method === "paypal" ? PAYPAL_URL : CASHAPP_URL;
-    const name = method === "paypal" ? "PayPal" : "Cash App";
-
-    if (url.includes("_LINK_HERE")) {
-      alert(`${name} checkout is being connected. You will be sent to Discord so Forge Servers can arrange the $5 beta payment safely.`);
-      window.open(DISCORD_URL, "_blank", "noopener");
-      return;
-    }
-
-    window.open(url, "_blank", "noopener");
-  });
-});
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closePaymentModal();
-});
 
 const menu = document.querySelector(".menu");
 const nav = document.querySelector(".nav");
 menu.addEventListener("click", () => nav.classList.toggle("open"));
-document.querySelectorAll(".nav a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+document.querySelectorAll(".nav a").forEach(link => {
+  link.addEventListener("click", () => nav.classList.remove("open"));
+});
 
-const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (entry.isIntersecting) entry.target.classList.add("visible");
-}), { threshold: .12 });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+}, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
