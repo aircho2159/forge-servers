@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Forge Servers — Minecraft server rentals with personal setup and support.">
+<title>Forge Servers | Minecraft Server Rentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090c;--panel:#11151b;--panel2:#171c23;--text:#f6f8fb;--muted:#9da6b3;
+  --orange:#ff7a1a;--gold:#ffbd59;--red:#d93613;--border:rgba(255,255,255,.09);
+  --shadow:0 26px 80px rgba(0,0,0,.48)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,sans-serif;background:
+radial-gradient(circle at 77% 14%,rgba(255,105,20,.12),transparent 27rem),var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}button{font:inherit}.site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;
+justify-content:space-between;padding:1rem clamp(1rem,5vw,5rem);background:rgba(7,9,12,.79);backdrop-filter:blur(18px);
+border-bottom:1px solid var(--border)}.brand{display:flex;align-items:center;gap:.8rem;font-family:"Press Start 2P",monospace;
+font-size:clamp(.78rem,1.8vw,1rem)}.logo{position:relative;width:42px;height:46px;filter:drop-shadow(0 0 15px rgba(255,122,26,.5))}
+.logo-top{width:36px;height:8px;margin:auto;background:#777d84;border:3px solid #23282e}.logo-body{position:relative;width:42px;height:38px;
+background:linear-gradient(145deg,#626870,#30353b);border:4px solid #191d22}.logo-slot{width:24px;height:6px;margin:5px auto;background:#101318}
+.logo-fire{position:absolute;left:6px;right:6px;bottom:4px;height:16px;background:#2d1108;border:2px solid #11151a;overflow:hidden}
+.logo-fire i{position:absolute;bottom:-5px;width:11px;height:20px;border-radius:55% 45% 55% 45%;background:linear-gradient(#fff1a2,#ffb33c 40%,#ff5c18 75%,#b8200c);
+animation:flicker .62s infinite alternate ease-in-out}.logo-fire i:nth-child(1){left:1px}.logo-fire i:nth-child(2){left:9px;animation-delay:.15s}.logo-fire i:nth-child(3){left:17px;animation-delay:.3s}
+nav{display:flex;align-items:center;gap:1.4rem;color:var(--muted)}nav a:hover{color:#fff}.nav-cta{padding:.72rem 1rem;border:1px solid rgba(255,122,26,.58);
+background:rgba(255,122,26,.12);border-radius:10px;color:#fff!important}.menu{display:none;background:none;border:0}.menu span{display:block;width:26px;height:2px;background:white;margin:5px}
+.hero{position:relative;min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:3rem;
+padding:clamp(4rem,8vw,8rem) clamp(1rem,7vw,7rem);overflow:hidden}.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.024) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.024) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent)}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;right:7%;top:13%;background:radial-gradient(circle,rgba(255,98,17,.24),transparent 66%);filter:blur(15px)}
+.hero-copy,.hero-art{position:relative;z-index:2}.availability{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border:1px solid var(--border);
+background:rgba(255,255,255,.035);border-radius:999px;color:#d6dce3;font-size:.85rem}.availability b{width:8px;height:8px;border-radius:50%;background:#58df7d;box-shadow:0 0 12px #58df7d}
+.kicker{color:var(--gold);font-size:.76rem;font-weight:900;letter-spacing:.18em;margin:1.8rem 0 .85rem}.hero h1{font-size:clamp(3.15rem,7vw,6.8rem);line-height:.95;
+letter-spacing:-.066em;margin:0;max-width:900px}.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(90deg,var(--gold),var(--orange),#ff4f1f);
+-webkit-background-clip:text;background-clip:text}.lead{max-width:680px;font-size:clamp(1rem,2vw,1.2rem);line-height:1.75;color:var(--muted);margin:1.6rem 0 2rem}
+.actions{display:flex;gap:1rem;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:1rem 1.35rem;font-weight:900;
+border:1px solid transparent;transition:.25s ease;cursor:pointer}.btn:hover{transform:translateY(-3px)}.primary{color:#1b1009;background:linear-gradient(135deg,#ffc45f,var(--orange));box-shadow:0 13px 38px rgba(255,122,26,.26)}
+.primary:hover{box-shadow:0 18px 48px rgba(255,122,26,.42)}.secondary{color:#fff;border-color:var(--border);background:rgba(255,255,255,.035)}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:3rem}.trust div{padding:1rem;border-left:2px solid rgba(255,122,26,.5);background:linear-gradient(90deg,rgba(255,122,26,.05),transparent)}
+.trust strong{display:block;font-size:1.05rem}.trust span{color:var(--muted);font-size:.76rem}.hero-art{display:grid;place-items:center;min-height:520px}.furnace{position:relative;width:min(360px,80vw);animation:float 4s ease-in-out infinite;
+filter:drop-shadow(0 40px 50px rgba(0,0,0,.68))}.chimney{width:112px;height:90px;margin:auto;background:linear-gradient(90deg,#252a30,#4f555d,#252a30);border:8px solid #171b20}
+.body{position:relative;height:360px;background:linear-gradient(145deg,rgba(255,255,255,.12),transparent 34%),repeating-linear-gradient(0deg,#3b4149 0 36px,#30353c 36px 72px);
+border:14px solid #171b20;border-radius:8px;box-shadow:inset 0 0 0 4px #626a73,inset 0 -32px 52px rgba(0,0,0,.36)}.window{position:absolute;left:15%;right:15%;bottom:12%;height:145px;overflow:hidden;
+background:radial-gradient(circle at center bottom,#ffd16c,#ff711f 43%,#70180b 79%,#120b08);border:14px solid #16191d;box-shadow:0 0 42px rgba(255,102,24,.68),inset 0 0 25px rgba(255,210,100,.5)}
+.flame{position:absolute;bottom:-25px;border-radius:52% 48% 62% 38%;background:linear-gradient(#fff1ac,#ffb43f 35%,#ff5a19 70%,#b61e0c);transform-origin:center bottom;animation:bigFlame .75s infinite alternate ease-in-out}
+.f1{left:9%;width:82px;height:127px}.f2{left:38%;width:98px;height:158px;animation-delay:.18s}.f3{right:8%;width:72px;height:112px;animation-delay:.3s}.rivet{position:absolute;width:13px;height:13px;border-radius:50%;background:#9aa1aa;border:3px solid #1b1f24}
+.r1{top:16px;left:16px}.r2{top:16px;right:16px}.r3{bottom:16px;left:16px}.r4{bottom:16px;right:16px}.shadow{width:80%;height:28px;margin:28px auto 0;border-radius:50%;background:rgba(0,0,0,.58);filter:blur(12px)}
+.section{padding:clamp(4rem,8vw,7rem) clamp(1rem,7vw,7rem)}.heading{max-width:730px;margin:0 auto 3rem;text-align:center}.heading .kicker{margin-top:0}.heading h2,.cta h2{font-size:clamp(2rem,4vw,3.6rem);letter-spacing:-.045em;margin:.4rem 0 1rem}
+.heading p,.cta p{color:var(--muted);line-height:1.7}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1200px;margin:auto}.card{padding:1.6rem;border:1px solid var(--border);
+background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border-radius:18px;transition:.3s ease}.card:hover{transform:translateY(-7px);border-color:rgba(255,122,26,.46);box-shadow:var(--shadow)}
+.icon{font-size:1.8rem}.card h3{margin:1rem 0 .6rem}.card p{color:var(--muted);line-height:1.65;margin:0}.plans{background:linear-gradient(180deg,transparent,rgba(255,122,26,.04),transparent)}
+.plan{position:relative;max-width:720px;margin:auto;padding:clamp(1.4rem,4vw,2.4rem);border:1px solid rgba(255,122,26,.36);background:linear-gradient(145deg,#171c23,#0f1318);border-radius:22px;
+box-shadow:0 30px 80px rgba(0,0,0,.42),0 0 58px rgba(255,122,26,.08)}.badge{position:absolute;right:20px;top:-13px;padding:.45rem .7rem;background:var(--orange);color:#1b0f08;border-radius:999px;font-size:.72rem;font-weight:900}
+.plan-top{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:2rem}.plan-label{color:var(--gold);font-size:.72rem;font-weight:900;letter-spacing:.15em}.plan h3{font-size:2rem;margin:.4rem 0 0}
+.price span{font-size:2.5rem;font-weight:900}.price small{color:var(--muted)}.specs{border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.5rem}.specs div{display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--border)}
+.specs div:last-child{border-bottom:0}.specs span{color:var(--muted)}.wide{width:100%}.note{text-align:center;color:var(--muted);font-size:.82rem}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1200px;margin:auto}
+.step{padding:1.5rem;border-top:1px solid rgba(255,122,26,.45);background:linear-gradient(180deg,rgba(255,122,26,.06),transparent)}.step span{color:var(--orange);font-family:"Press Start 2P";font-size:.75rem}.step p{color:var(--muted);line-height:1.6}
+.faq{max-width:900px;margin:auto}details{border-bottom:1px solid var(--border);padding:1.2rem 0}summary{cursor:pointer;font-size:1.05rem;font-weight:800;list-style:none}summary::after{content:"+";float:right;color:var(--orange);font-size:1.4rem}details[open] summary::after{content:"−"}
+details p{color:var(--muted);line-height:1.7;padding-right:2rem}.cta{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:2rem;padding:clamp(2rem,5vw,4rem);
+background:radial-gradient(circle at 90% 10%,rgba(255,122,26,.16),transparent 16rem),var(--panel);border:1px solid var(--border);border-radius:24px}.cta .kicker{margin-top:0}.cta-buttons{display:flex;gap:.8rem;flex-wrap:wrap;min-width:max-content}
+footer{padding:3rem clamp(1rem,7vw,7rem);border-top:1px solid var(--border);text-align:center;color:var(--muted)}.footer-brand{justify-content:center;color:#fff}.footer-links{display:flex;gap:1.3rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0}.footer-links a:hover{color:#fff}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+@keyframes flicker{from{transform:scaleY(.85) rotate(-4deg);filter:brightness(.9)}to{transform:scaleY(1.15) rotate(4deg);filter:brightness(1.25)}}
+@keyframes bigFlame{from{transform:scaleY(.8) skewX(-5deg)}to{transform:scaleY(1.12) skewX(5deg)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@media(max-width:900px){.menu{display:block}.nav{display:none;position:absolute;top:100%;left:0;right:0;padding:1.2rem;flex-direction:column;background:#0d1014;border-bottom:1px solid var(--border)}.nav.open{display:flex}
+.hero{grid-template-columns:1fr;text-align:center;padding-top:5rem}.lead{margin-left:auto;margin-right:auto}.actions{justify-content:center}.trust{grid-template-columns:repeat(2,1fr);text-align:left}.hero-art{min-height:400px}.furnace{width:min(290px,72vw)}.body{height:290px}.window{height:115px}
+.features{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.cta{flex-direction:column;align-items:flex-start}.cta-buttons{min-width:0}}
+@media(max-width:600px){.hero h1{font-size:3.15rem}.features,.steps{grid-template-columns:1fr}.trust{grid-template-columns:1fr 1fr}.plan-top{align-items:flex-start;flex-direction:column}.cta-buttons,.cta-buttons a{width:100%}.hero-art{min-height:340px}.furnace{width:235px}.chimney{height:65px;width:85px}.body{height:240px}.window{height:95px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#home">
+    <div class="logo"><div class="logo-top"></div><div class="logo-body"><div class="logo-slot"></div><div class="logo-fire"><i></i><i></i><i></i></div></div></div>
+    <span>Forge Servers</span>
+  </a>
+  <button class="menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+  <nav class="nav">
+    <a href="#features">Features</a><a href="#plans">Server</a><a href="#faq">FAQ</a>
+    <a href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Discord</a>
+    <a class="nav-cta pay-link" href="PAYMENT_LINK_HERE">Rent Server</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="grid"></div><div class="glow"></div>
+  <div class="hero-copy reveal">
+    <div class="availability"><b></b> Current availability: 1 Minecraft server</div>
+    <p class="kicker">MINECRAFT SERVER RENTALS</p>
+    <h1>Forge Your<br><em>Perfect Server</em></h1>
+    <p class="lead">A simple Minecraft server rental service for friends, communities, and creators. Direct support, personal setup, and no confusing ordering process.</p>
+    <div class="actions">
+      <a class="btn primary pay-link" href="PAYMENT_LINK_HERE">Pay & Rent Server</a>
+      <a class="btn secondary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Talk on Discord</a>
+    </div>
+    <div class="trust">
+      <div><strong>##</strong><span>Server RAM</span></div><div><strong>##</strong><span>Storage</span></div>
+      <div><strong>##</strong><span>CPU</span></div><div><strong>1</strong><span>Server Available</span></div>
+    </div>
+  </div>
+
+  <div class="hero-art reveal" aria-hidden="true">
+    <div class="furnace"><div class="chimney"></div><div class="body"><i class="rivet r1"></i><i class="rivet r2"></i><i class="rivet r3"></i><i class="rivet r4"></i>
+      <div class="window"><i class="flame f1"></i><i class="flame f2"></i><i class="flame f3"></i></div></div><div class="shadow"></div></div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="heading reveal"><p class="kicker">WHY FORGE SERVERS</p><h2>Minecraft hosting without the headache</h2><p>Start with one server now and expand only when the business grows.</p></div>
+  <div class="features">
+    <article class="card reveal"><div class="icon">⚡</div><h3>Personal Setup</h3><p>Your Minecraft server is prepared based on the version and setup you request.</p></article>
+    <article class="card reveal"><div class="icon">🧱</div><h3>Minecraft Only</h3><p>Focused on Minecraft, including Vanilla, Paper, Spigot, Fabric, Forge, and more.</p></article>
+    <article class="card reveal"><div class="icon">💬</div><h3>Discord Support</h3><p>Contact Forge Servers directly through Discord for setup questions and support.</p></article>
+    <article class="card reveal"><div class="icon">🔧</div><h3>Mods & Plugins</h3><p>Ask about custom worlds, plugins, modpacks, versions, and available configurations.</p></article>
+    <article class="card reveal"><div class="icon">💾</div><h3>Server Details</h3><p>Final RAM, CPU, storage, backup, and network specifications will be published soon.</p></article>
+    <article class="card reveal"><div class="icon">🔥</div><h3>One Available</h3><p>Only one Minecraft server is currently planned for rental, so availability is limited.</p></article>
+  </div>
+</section>
+
+<section class="section plans" id="plans">
+  <div class="heading reveal"><p class="kicker">SERVER RENTAL</p><h2>One simple server offer</h2><p>The unknown specifications and price remain marked with ## until finalized.</p></div>
+  <div class="plan reveal">
+    <div class="badge">ONLY 1 AVAILABLE</div>
+    <div class="plan-top"><div><p class="plan-label">MINECRAFT SERVER</p><h3>Forge One</h3></div><div class="price"><span>$##</span><small>/month</small></div></div>
+    <div class="specs">
+      <div><span>RAM</span><strong>## GB</strong></div><div><span>CPU</span><strong>##</strong></div>
+      <div><span>Storage</span><strong>## GB</strong></div><div><span>Player Slots</span><strong>##</strong></div>
+      <div><span>Server Location</span><strong>##</strong></div><div><span>Setup Time</span><strong>##</strong></div>
+    </div>
+    <a class="btn primary wide pay-link" href="PAYMENT_LINK_HERE">Pay & Rent This Server</a>
+    <p class="note">Need help before paying? Contact Forge Servers through Discord.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="heading reveal"><p class="kicker">HOW IT WORKS</p><h2>From payment to playing</h2></div>
+  <div class="steps">
+    <div class="step reveal"><span>01</span><h3>Review</h3><p>Check the available server and current specifications.</p></div>
+    <div class="step reveal"><span>02</span><h3>Pay</h3><p>Use the secure payment and rental link.</p></div>
+    <div class="step reveal"><span>03</span><h3>Discord</h3><p>Send your Minecraft version, player count, and setup needs.</p></div>
+    <div class="step reveal"><span>04</span><h3>Play</h3><p>Receive your server connection information after setup.</p></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="heading reveal"><p class="kicker">QUESTIONS</p><h2>Frequently asked questions</h2></div>
+  <div class="faq">
+    <details class="reveal"><summary>How many servers are available?</summary><p>Forge Servers currently has one Minecraft server planned for rental.</p></details>
+    <details class="reveal"><summary>Can I use mods or plugins?</summary><p>Yes, depending on the server resources and the Minecraft software you choose.</p></details>
+    <details class="reveal"><summary>Can I upload my world?</summary><p>Contact Forge Servers through Discord before paying so your world size and setup can be reviewed.</p></details>
+    <details class="reveal"><summary>How do I get support?</summary><p>All current customer communication and support is handled through the official Forge Servers Discord.</p></details>
+    <details class="reveal"><summary>Are the specifications final?</summary><p>Not yet. Any unknown specification or price is currently displayed as ##.</p></details>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="cta reveal"><div><p class="kicker">READY TO PLAY?</p><h2>Claim the available server</h2><p>Pay through the rental link, then contact Forge Servers on Discord with your Minecraft version and setup requirements.</p></div>
+    <div class="cta-buttons"><a class="btn primary pay-link" href="PAYMENT_LINK_HERE">Pay & Rent</a><a class="btn secondary" href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Open Discord</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <a class="brand footer-brand" href="#home"><span>🔥</span><span>Forge Servers</span></a>
+  <p>Minecraft server rentals. Built for players.</p>
+  <div class="footer-links"><a href="#features">Features</a><a href="#plans">Server</a><a href="#faq">FAQ</a><a href="https://discord.gg/UD2HnnCfp" target="_blank" rel="noopener">Discord</a></div>
+  <small>© <span id="year"></span> Forge Servers. Not affiliated with Mojang or Microsoft.</small>
+</footer>
+
+<script>
+const DISCORD_URL = "https://discord.gg/UD2HnnCfp";
+const PAYMENT_URL = "PAYMENT_LINK_HERE";
+
+document.querySelectorAll('a[href="https://discord.gg/UD2HnnCfp"]').forEach(a => a.href = DISCORD_URL);
+document.querySelectorAll('.pay-link').forEach(a => {
+  a.href = PAYMENT_URL;
+  a.addEventListener('click', e => {
+    if (PAYMENT_URL === "PAYMENT_LINK_HERE_HERE") {
+      e.preventDefault();
+      alert("The payment/rental link has not been added yet. Please contact Forge Servers on Discord.");
+      window.open(DISCORD_URL, "_blank", "noopener");
+    }
+  });
+});
+
+const menu = document.querySelector('.menu');
+const nav = document.querySelector('.nav');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting)entry.target.classList.add('visible')
+}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
