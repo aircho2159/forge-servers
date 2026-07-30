@@ -1,0 +1,4690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Forge Servers | Minecraft Server Rentals</title>
+  <meta name="description" content="Affordable Minecraft server rentals with 4 GB and 8 GB plans, SSD-powered hosting, backups, and Discord support.">
+  <meta name="theme-color" content="#080a0e">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="canonical" href="https://aircho2159.github.io/forge-servers/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aircho2159.github.io/forge-servers/">
+  <meta property="og:title" content="Forge Servers | Minecraft Server Rentals">
+  <meta property="og:description" content="Affordable Minecraft hosting with Starter and Standard plans, SSD-powered performance, and backups.">
+  <meta property="og:site_name" content="Forge Servers">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Forge Servers | Minecraft Server Rentals">
+  <meta name="twitter:description" content="Minecraft hosting with 4 GB and 8 GB plans, SSD-powered performance, backups, and Discord support.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23080a0e'/%3E%3Crect x='12' y='10' width='40' height='44' rx='5' fill='%23484f58' stroke='%23161a20' stroke-width='6'/%3E%3Crect x='18' y='18' width='28' height='8' fill='%23101418'/%3E%3Crect x='17' y='32' width='30' height='17' rx='2' fill='%23361a0a' stroke='%23161a20' stroke-width='4'/%3E%3Cpath d='M22 48c-3-8 5-11 4-18 7 5 7 10 5 14 3-5 7-7 6-13 7 7 7 13 3 17z' fill='%23ff6f18'/%3E%3Cpath d='M27 48c-1-5 3-8 4-12 4 4 4 8 2 12z' fill='%23ffd26a'/%3E%3C/svg%3E">
+
+  <style>
+    :root{
+      --bg:#080a0e;
+      --bg-2:#0d1117;
+      --panel:#111720;
+      --panel-2:#161e28;
+      --text:#f7f8fb;
+      --muted:#99a5b4;
+      --line:rgba(255,255,255,.09);
+      --orange:#ff7519;
+      --orange-2:#ff3f14;
+      --gold:#ffc55e;
+      --green:#5cde7d;
+      --blue:#4cc2ff;
+      --shadow:0 30px 90px rgba(0,0,0,.5);
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+      scrollbar-color:#ff7519 #0b0e13;
+    }
+
+    body{
+      margin:0;
+      overflow-x:hidden;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 16% 18%,rgba(255,117,25,.07),transparent 24rem),
+        radial-gradient(circle at 84% 48%,rgba(76,194,255,.035),transparent 26rem),
+        var(--bg);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.5;
+    }
+
+    ::selection{
+      color:#211006;
+      background:var(--gold);
+    }
+
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+
+    .skip-link{
+      position:fixed;
+      z-index:9999;
+      left:1rem;
+      top:1rem;
+      transform:translateY(-160%);
+      padding:.75rem 1rem;
+      border-radius:10px;
+      color:#140c05;
+      background:var(--gold);
+      font-weight:900;
+      transition:transform .2s ease;
+    }
+
+    .skip-link:focus{transform:none}
+
+    .progress{
+      position:fixed;
+      z-index:1000;
+      inset:0 0 auto;
+      height:3px;
+      pointer-events:none;
+      background:rgba(255,255,255,.02);
+    }
+
+    .progress span{
+      display:block;
+      width:0;
+      height:100%;
+      background:linear-gradient(90deg,var(--gold),var(--orange),var(--orange-2));
+      box-shadow:0 0 18px rgba(255,117,25,.85);
+    }
+
+    .site-header{
+      position:sticky;
+      z-index:90;
+      top:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem clamp(1rem,5vw,5rem);
+      border-bottom:1px solid var(--line);
+      background:rgba(8,10,14,.72);
+      backdrop-filter:blur(18px);
+      transition:padding .25s ease,background .25s ease,box-shadow .25s ease;
+    }
+
+    .site-header.scrolled{
+      padding-top:.72rem;
+      padding-bottom:.72rem;
+      background:rgba(8,10,14,.94);
+      box-shadow:0 15px 45px rgba(0,0,0,.3);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.78rem;
+      font-family:"Courier New",monospace;
+      font-weight:1000;
+      letter-spacing:.04em;
+    }
+
+    .mini-furnace{
+      position:relative;
+      width:42px;
+      height:42px;
+      border:4px solid #171c22;
+      border-radius:5px;
+      background:linear-gradient(145deg,#626a74,#30363e);
+      box-shadow:0 0 22px rgba(255,117,25,.18);
+    }
+
+    .mini-furnace::before{
+      content:"";
+      position:absolute;
+      left:8px;
+      right:8px;
+      top:7px;
+      height:5px;
+      background:#11151a;
+    }
+
+    .mini-furnace::after{
+      content:"";
+      position:absolute;
+      left:7px;
+      right:7px;
+      bottom:5px;
+      height:14px;
+      border:2px solid #181b20;
+      background:
+        radial-gradient(circle at 50% 100%,#fff4ac 0 13%,#ffb73e 14% 34%,#ff6018 35% 62%,#571408 63%);
+      box-shadow:0 0 13px rgba(255,105,23,.65);
+      animation:miniFire .58s ease-in-out infinite alternate;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:1.3rem;
+      color:var(--muted);
+      font-size:.9rem;
+      font-weight:700;
+    }
+
+    .nav a{
+      position:relative;
+      transition:color .2s ease;
+    }
+
+    .nav a:not(.nav-cta)::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-.55rem;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--gold),var(--orange));
+      transform:scaleX(0);
+      transition:transform .22s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{color:#fff}
+
+    .nav a:hover::after,
+    .nav a.active::after{transform:scaleX(1)}
+
+    .nav-cta{
+      padding:.72rem 1rem;
+      border:1px solid rgba(255,117,25,.48);
+      border-radius:11px;
+      color:#fff!important;
+      background:rgba(255,117,25,.1);
+    }
+
+    .menu{
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      color:#fff;
+      background:rgba(255,255,255,.035);
+      cursor:pointer;
+    }
+
+    .menu span{
+      display:block;
+      width:22px;
+      height:2px;
+      margin:5px auto;
+      background:#fff;
+    }
+
+    .hero{
+      position:relative;
+      min-height:1120px;
+      overflow:hidden;
+      isolation:isolate;
+      padding:clamp(5rem,8vw,7rem) 1rem 7rem;
+      background:
+        radial-gradient(circle at 50% 53%,rgba(255,91,17,.19),transparent 22rem),
+        linear-gradient(180deg,rgba(8,10,14,.08),rgba(8,10,14,.72));
+    }
+
+    .hero-grid{
+      position:absolute;
+      inset:0;
+      z-index:-5;
+      opacity:.68;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:54px 54px;
+      mask-image:linear-gradient(to bottom,#000 0 77%,transparent);
+    }
+
+    .hero-vignette{
+      position:absolute;
+      inset:0;
+      z-index:-4;
+      background:
+        radial-gradient(circle at center,transparent 0 32%,rgba(8,10,14,.18) 58%,rgba(8,10,14,.9) 100%);
+      pointer-events:none;
+    }
+
+    .title-zone{
+      position:relative;
+      z-index:5;
+      width:min(1180px,100%);
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+    }
+
+    .availability{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.55rem .82rem;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:#d8dde4;
+      background:rgba(255,255,255,.035);
+      backdrop-filter:blur(12px);
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .availability i{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 14px var(--green);
+      animation:statusPulse 1.6s ease-in-out infinite;
+    }
+
+    .eyebrow{
+      margin:1.8rem 0 1rem;
+      color:var(--gold);
+      font-family:"Courier New",monospace;
+      font-size:.76rem;
+      font-weight:1000;
+      letter-spacing:.21em;
+    }
+
+    .forge-title{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin:0;
+      font-family:"Courier New",monospace;
+      font-size:clamp(4rem,10vw,8.8rem);
+      line-height:.84;
+      letter-spacing:-.075em;
+      filter:drop-shadow(0 8px 0 #15191f) drop-shadow(0 0 28px rgba(255,112,22,.26));
+      animation:titleFloat 4.8s ease-in-out infinite;
+    }
+
+    .forge-title span{
+      display:block;
+      color:transparent;
+      background:
+        linear-gradient(180deg,#fff9dc 0%,#ffcb69 17%,#ff7a1b 47%,#b82a0d 76%,#541307 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-stroke:clamp(1px,.18vw,3px) rgba(36,21,13,.85);
+      text-shadow:0 0 35px rgba(255,112,22,.28);
+      animation:titleHeat 2.5s ease-in-out infinite alternate;
+    }
+
+    .forge-title span:last-child{
+      margin-top:.2em;
+      font-size:.88em;
+      letter-spacing:-.065em;
+      animation-delay:.22s;
+    }
+
+    .forge-title::after{
+      content:"";
+      position:absolute;
+      left:9%;
+      right:9%;
+      bottom:-1.45rem;
+      height:4px;
+      border-radius:999px;
+      background:linear-gradient(90deg,transparent,var(--gold),var(--orange),var(--gold),transparent);
+      box-shadow:0 0 22px rgba(255,117,25,.8);
+      animation:titleLine 2.2s ease-in-out infinite;
+    }
+
+    .hero-subtitle{
+      max-width:680px;
+      margin:2.8rem auto 0;
+      color:#aab4c0;
+      font-size:clamp(1rem,1.7vw,1.16rem);
+      line-height:1.75;
+    }
+
+    .air-gap{
+      height:clamp(9rem,17vh,15rem);
+    }
+
+    .forge-stage{
+      position:relative;
+      z-index:4;
+      width:min(700px,100%);
+      margin:auto;
+      display:grid;
+      place-items:center;
+      perspective:1200px;
+    }
+
+    .forge-halo{
+      position:absolute;
+      width:min(620px,88vw);
+      aspect-ratio:1;
+      border:1px solid rgba(255,117,25,.09);
+      border-radius:50%;
+      background:
+        radial-gradient(circle,rgba(255,108,22,.16),rgba(255,108,22,.045) 35%,transparent 65%);
+      box-shadow:
+        inset 0 0 80px rgba(255,117,25,.07),
+        0 0 85px rgba(255,85,16,.08);
+      animation:haloPulse 3.4s ease-in-out infinite;
+    }
+
+    .forge-halo::before,
+    .forge-halo::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px dashed rgba(255,197,94,.12);
+      animation:haloSpin 22s linear infinite;
+    }
+
+    .forge-halo::before{inset:10%}
+    .forge-halo::after{
+      inset:22%;
+      animation-direction:reverse;
+      animation-duration:15s;
+    }
+
+    .furnace{
+      position:relative;
+      z-index:3;
+      width:min(350px,72vw);
+      animation:furnaceFloat 3.8s ease-in-out infinite;
+      filter:
+        drop-shadow(0 45px 50px rgba(0,0,0,.72))
+        drop-shadow(0 0 24px rgba(255,105,20,.16));
+      transition:filter .3s ease;
+    }
+
+    .furnace:hover{
+      filter:
+        drop-shadow(0 48px 55px rgba(0,0,0,.74))
+        drop-shadow(0 0 44px rgba(255,105,20,.38));
+    }
+
+    .furnace-cap{
+      position:relative;
+      width:116px;
+      height:82px;
+      margin:auto;
+      border:8px solid #171b20;
+      background:linear-gradient(90deg,#252b31,#5d646d,#252b31);
+      box-shadow:inset 0 0 0 3px rgba(255,255,255,.05);
+    }
+
+    .furnace-cap::before{
+      content:"";
+      position:absolute;
+      left:-18px;
+      right:-18px;
+      top:-11px;
+      height:16px;
+      border:6px solid #171b20;
+      background:#515862;
+    }
+
+    .furnace-body{
+      position:relative;
+      height:350px;
+      overflow:hidden;
+      border:14px solid #171b20;
+      border-radius:8px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.13),transparent 34%),
+        repeating-linear-gradient(0deg,#3d444d 0 35px,#30363e 35px 70px);
+      box-shadow:
+        inset 0 0 0 4px #666e78,
+        inset 0 -34px 60px rgba(0,0,0,.38);
+    }
+
+    .furnace-slot{
+      width:54%;
+      height:24px;
+      margin:42px auto 0;
+      border:6px solid #20252b;
+      background:#0e1216;
+      box-shadow:inset 0 6px 10px rgba(0,0,0,.9);
+    }
+
+    .fire-window{
+      position:absolute;
+      left:14%;
+      right:14%;
+      bottom:10%;
+      height:142px;
+      overflow:hidden;
+      border:14px solid #161a1f;
+      background:
+        radial-gradient(circle at center bottom,#fff0a5 0 9%,#ffd064 10% 24%,#ff721b 25% 52%,#761b0b 73%,#160c08);
+      box-shadow:
+        0 0 52px rgba(255,102,23,.72),
+        inset 0 0 28px rgba(255,222,128,.5);
+      transition:box-shadow .25s ease;
+    }
+
+    .furnace:hover .fire-window{
+      box-shadow:
+        0 0 82px rgba(255,102,23,.95),
+        inset 0 0 38px rgba(255,231,160,.68);
+    }
+
+    .flame{
+      position:absolute;
+      bottom:-27px;
+      border-radius:53% 47% 62% 38%;
+      transform-origin:center bottom;
+      background:linear-gradient(#fff6c5,#ffc14d 33%,#ff6018 69%,#a71f0c);
+      animation:flameMove .7s ease-in-out infinite alternate;
+    }
+
+    .flame.one{left:6%;width:78px;height:122px}
+    .flame.two{left:34%;width:102px;height:164px;animation-delay:.15s}
+    .flame.three{right:5%;width:72px;height:111px;animation-delay:.28s}
+
+    .furnace:hover .flame{animation-duration:.38s}
+
+    .rivet{
+      position:absolute;
+      width:14px;
+      height:14px;
+      border:3px solid #1b2025;
+      border-radius:50%;
+      background:#9aa2ab;
+      box-shadow:inset -2px -2px 3px rgba(0,0,0,.35);
+    }
+
+    .rivet.r1{left:16px;top:16px}
+    .rivet.r2{right:16px;top:16px}
+    .rivet.r3{left:16px;bottom:16px}
+    .rivet.r4{right:16px;bottom:16px}
+
+    .smoke{
+      position:absolute;
+      z-index:-1;
+      left:50%;
+      top:4px;
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      opacity:0;
+      filter:blur(5px);
+      background:radial-gradient(circle,rgba(190,198,208,.22),rgba(105,115,128,.06) 52%,transparent 72%);
+      animation:smokeRise 5.2s linear infinite;
+    }
+
+    .smoke.s2{animation-delay:1.7s}
+    .smoke.s3{animation-delay:3.4s}
+
+    .furnace-shadow{
+      position:absolute;
+      z-index:1;
+      bottom:-54px;
+      width:72%;
+      height:34px;
+      border-radius:50%;
+      background:rgba(0,0,0,.68);
+      filter:blur(14px);
+      animation:shadowPulse 3.8s ease-in-out infinite;
+    }
+
+    .forge-floor{
+      position:absolute;
+      z-index:0;
+      left:50%;
+      bottom:-100px;
+      width:1100px;
+      height:280px;
+      transform:translateX(-50%) rotateX(71deg);
+      transform-origin:center top;
+      border-top:1px solid rgba(255,117,25,.16);
+      background:
+        linear-gradient(rgba(255,117,25,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,117,25,.08) 1px,transparent 1px),
+        linear-gradient(180deg,rgba(255,117,25,.05),transparent 62%);
+      background-size:64px 64px;
+      mask-image:linear-gradient(to bottom,#000,transparent 74%);
+    }
+
+    .hero-actions{
+      position:relative;
+      z-index:6;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:1rem;
+      margin-top:4.2rem;
+    }
+
+    .btn{
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:.95rem 1.35rem;
+      border:1px solid transparent;
+      border-radius:12px;
+      font-weight:900;
+      cursor:pointer;
+      transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+    }
+
+    .btn:hover{transform:translateY(-3px)}
+
+    .btn-primary{
+      color:#211006;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      box-shadow:0 15px 42px rgba(255,117,25,.27);
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 20px 52px rgba(255,117,25,.45);
+    }
+
+    .btn-primary::after{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      top:-50%;
+      bottom:-50%;
+      left:-80px;
+      width:42px;
+      transform:skewX(-18deg);
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.56),transparent);
+      animation:buttonShine 4.5s ease-in-out infinite;
+    }
+
+    .btn-secondary{
+      color:#fff;
+      border-color:var(--line);
+      background:rgba(255,255,255,.035);
+      backdrop-filter:blur(10px);
+    }
+
+    .stats{
+      position:relative;
+      z-index:6;
+      width:min(900px,100%);
+      margin:2.5rem auto 0;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:.75rem;
+    }
+
+    .stats div{
+      padding:1rem;
+      border-left:2px solid rgba(255,117,25,.5);
+      background:linear-gradient(90deg,rgba(255,117,25,.06),transparent);
+      text-align:left;
+    }
+
+    .stats strong{
+      display:block;
+      font-size:1.05rem;
+    }
+
+    .stats span{
+      color:var(--muted);
+      font-size:.74rem;
+    }
+
+    .ember-field{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      overflow:hidden;
+      pointer-events:none;
+    }
+
+    .ember{
+      position:absolute;
+      left:var(--x);
+      bottom:-30px;
+      width:var(--size);
+      height:var(--size);
+      border-radius:50%;
+      opacity:0;
+      background:#ffc15c;
+      box-shadow:0 0 8px #ff7619,0 0 17px rgba(255,62,13,.72);
+      animation:emberRise var(--time) var(--delay) linear infinite;
+    }
+
+    .status-bar{
+      position:relative;
+      z-index:10;
+      width:min(1180px,calc(100% - 2rem));
+      margin:-2.2rem auto 0;
+      padding:1rem;
+      display:grid;
+      grid-template-columns:auto repeat(4,1fr);
+      align-items:center;
+      gap:.65rem;
+      border:1px solid var(--line);
+      border-radius:17px;
+      background:rgba(15,20,27,.93);
+      backdrop-filter:blur(18px);
+      box-shadow:0 25px 70px rgba(0,0,0,.42);
+    }
+
+    .status-title{
+      padding:0 .65rem;
+      color:var(--gold);
+      font-family:"Courier New",monospace;
+      font-size:.68rem;
+      font-weight:1000;
+      letter-spacing:.14em;
+      white-space:nowrap;
+    }
+
+    .status-item{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      column-gap:.55rem;
+      align-items:center;
+      min-height:48px;
+      padding:.55rem .7rem;
+      border-left:1px solid var(--line);
+    }
+
+    .status-item i{
+      grid-row:1/3;
+      width:9px;
+      height:9px;
+      border-radius:50%;
+    }
+
+    .status-item i.online{background:var(--green);box-shadow:0 0 12px var(--green)}
+    .status-item i.beta{background:var(--orange);box-shadow:0 0 12px var(--orange)}
+    .status-item i.price{background:var(--blue);box-shadow:0 0 12px var(--blue)}
+
+    .status-item span{
+      color:var(--muted);
+      font-size:.68rem;
+    }
+
+    .status-item strong{
+      font-size:.8rem;
+    }
+
+    .section{
+      padding:clamp(4.5rem,8vw,7.5rem) clamp(1rem,7vw,7rem);
+    }
+
+    .section-heading{
+      max-width:760px;
+      margin:0 auto 3rem;
+      text-align:center;
+    }
+
+    .section-heading .eyebrow{margin-top:0}
+
+    .section-heading h2,
+    .cta h2{
+      margin:.35rem 0 1rem;
+      font-size:clamp(2.1rem,4vw,3.7rem);
+      line-height:1.08;
+      letter-spacing:-.05em;
+    }
+
+    .section-heading p,
+    .cta p{
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .feature-grid{
+      width:min(1200px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      min-height:240px;
+      padding:1.55rem;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.014));
+      transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-7px);
+      border-color:rgba(255,117,25,.44);
+      box-shadow:var(--shadow);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      right:-42px;
+      top:-42px;
+      width:84px;
+      height:84px;
+      transform:rotate(45deg);
+      border:1px solid rgba(255,117,25,.14);
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:2px;
+      transform:scaleX(0);
+      background:linear-gradient(90deg,transparent,var(--orange),transparent);
+      transition:transform .3s ease;
+    }
+
+    .card:hover::after{transform:scaleX(1)}
+
+    .card-icon{
+      font-size:1.8rem;
+      filter:drop-shadow(0 0 14px rgba(255,117,25,.2));
+    }
+
+    .card h3{margin:1rem 0 .55rem}
+    .card p{margin:0;color:var(--muted);line-height:1.68}
+
+    .setup-section{
+      background:
+        radial-gradient(circle at 15% 44%,rgba(78,180,90,.05),transparent 20rem),
+        radial-gradient(circle at 86% 48%,rgba(255,117,25,.065),transparent 22rem);
+    }
+
+    .setup-grid{
+      width:min(1120px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+    }
+
+    .setup-card{
+      min-height:292px;
+      transform-style:preserve-3d;
+    }
+
+    .cube{
+      position:relative;
+      width:62px;
+      height:62px;
+      transform:rotate(-6deg) translateZ(18px);
+      border:3px solid #171c22;
+      box-shadow:inset -12px -12px 18px rgba(0,0,0,.22),8px 10px 0 rgba(0,0,0,.18);
+    }
+
+    .cube::before{
+      content:"";
+      position:absolute;
+      inset:6px;
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    .cube.grass{background:linear-gradient(#58a84a 0 27%,#744a2a 27%)}
+    .cube.paper{background:linear-gradient(135deg,#f4f1da,#a8beba)}
+    .cube.fabric{background:linear-gradient(135deg,#d8c4a0,#725537)}
+    .cube.forge{background:linear-gradient(135deg,#6a727c,#2c3138)}
+    .cube.plugin{background:linear-gradient(135deg,#aa50d7,#4b2181)}
+    .cube.world{background:linear-gradient(#4b9ad9 0 44%,#dcc76a 44% 62%,#44743a 62%)}
+
+    .setup-card small{
+      display:inline-block;
+      margin-top:1.1rem;
+      color:var(--gold);
+      font-size:.67rem;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .setup-note{
+      width:min(920px,100%);
+      margin:1.2rem auto 0;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:1rem;
+      align-items:center;
+      padding:1.05rem 1.2rem;
+      border:1px solid rgba(255,117,25,.25);
+      border-radius:15px;
+      background:rgba(255,117,25,.055);
+    }
+
+    .setup-note>span{font-size:1.45rem}
+    .setup-note p{margin:0;color:var(--muted)}
+    .setup-note strong{color:#fff}
+    .setup-note a{color:var(--gold);font-weight:900;white-space:nowrap}
+
+    .coming-soon-pill{
+      padding:.48rem .72rem;
+      border:1px solid rgba(255,197,94,.4);
+      border-radius:999px;
+      color:var(--gold);
+      background:rgba(255,197,94,.08);
+      font-size:.7rem;
+      font-weight:1000;
+      letter-spacing:.08em;
+      white-space:nowrap;
+    }
+
+    .plan-section{
+      background:linear-gradient(180deg,transparent,rgba(255,117,25,.04),transparent);
+    }
+
+    .plan{
+      position:relative;
+      width:min(760px,100%);
+      margin:auto;
+      padding:clamp(1.5rem,4vw,2.5rem);
+      overflow:hidden;
+      border:1px solid rgba(255,117,25,.4);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 90% 8%,rgba(255,117,25,.14),transparent 14rem),
+        linear-gradient(145deg,#171e27,#0e1319);
+      box-shadow:0 35px 90px rgba(0,0,0,.44),0 0 70px rgba(255,117,25,.07);
+    }
+
+    .plan::before{
+      content:"";
+      position:absolute;
+      right:-110px;
+      top:-110px;
+      width:250px;
+      height:250px;
+      border:1px dashed rgba(255,197,94,.13);
+      border-radius:50%;
+      animation:haloSpin 18s linear infinite;
+    }
+
+    .plan-badge{
+      position:absolute;
+      top:1.15rem;
+      right:1.15rem;
+      padding:.48rem .72rem;
+      border-radius:999px;
+      color:#211006;
+      background:var(--orange);
+      font-size:.7rem;
+      font-weight:1000;
+    }
+
+    .plan-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:1rem;
+      margin-bottom:2rem;
+    }
+
+    .plan-label{
+      color:var(--gold);
+      font-size:.72rem;
+      font-weight:900;
+      letter-spacing:.15em;
+    }
+
+    .plan h3{
+      margin:.35rem 0 0;
+      font-size:2.05rem;
+    }
+
+    .price strong{
+      font-size:2.7rem;
+      line-height:1;
+    }
+
+    .price span{color:var(--muted)}
+
+    .specs{
+      margin:0 0 1.5rem;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .specs div{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      padding:1rem 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .specs div:last-child{border-bottom:0}
+    .specs span{color:var(--muted)}
+
+    .plan-note{
+      margin:1rem 0 0;
+      color:var(--muted);
+      text-align:center;
+      font-size:.8rem;
+    }
+
+
+    .plans-grid{
+      width:min(1220px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.25rem;
+      align-items:stretch;
+    }
+
+    .plans-grid .plan{
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .plans-grid .specs{flex:1}
+
+    .plan.standard{
+      border-color:rgba(76,194,255,.42);
+      background:
+        radial-gradient(circle at 90% 8%,rgba(76,194,255,.13),transparent 14rem),
+        linear-gradient(145deg,#171e27,#0e1319);
+      box-shadow:0 35px 90px rgba(0,0,0,.44),0 0 70px rgba(76,194,255,.065);
+    }
+
+    .plan.standard::before{border-color:rgba(76,194,255,.14)}
+
+    .plan.standard .plan-badge{
+      color:#07131a;
+      background:var(--blue);
+    }
+
+    .recommended-spec{
+      background:rgba(255,197,94,.045);
+    }
+
+    .recommended-spec strong{
+      color:var(--gold);
+      font-size:1.02rem;
+    }
+
+    .standard .recommended-spec{
+      background:rgba(76,194,255,.045);
+    }
+
+    .standard .recommended-spec strong{
+      color:var(--blue);
+    }
+
+    .limit-spec{
+      font-size:.79rem;
+    }
+
+    .limit-spec span,
+    .limit-spec strong{
+      opacity:.78;
+    }
+
+    .plan.modded{
+      border-color:rgba(170,80,215,.42);
+      background:
+        radial-gradient(circle at 90% 8%,rgba(170,80,215,.14),transparent 14rem),
+        linear-gradient(145deg,#171e27,#0e1319);
+      box-shadow:0 35px 90px rgba(0,0,0,.44),0 0 70px rgba(170,80,215,.07);
+    }
+
+    .plan.modded::before{
+      border-color:rgba(170,80,215,.16);
+    }
+
+    .plan.modded .plan-badge{
+      color:#fff;
+      background:linear-gradient(135deg,#aa50d7,#6930a8);
+    }
+
+    .coming-price{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+    }
+
+    .coming-price strong{
+      font-size:2.15rem;
+    }
+
+    .btn-disabled{
+      border:1px solid rgba(170,80,215,.34);
+      color:#b7a6c7;
+      background:rgba(170,80,215,.08);
+      cursor:not-allowed;
+      opacity:.78;
+    }
+
+    .btn-disabled:hover{
+      transform:none;
+    }
+
+    @media(max-width:1080px){
+      .plans-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .plans-grid .coming-soon-card{
+        grid-column:1/-1;
+        width:min(540px,100%);
+        justify-self:center;
+      }
+    }
+
+    @media(max-width:820px){
+      .plans-grid{grid-template-columns:1fr}
+
+      .plans-grid .coming-soon-card{
+        grid-column:auto;
+        width:100%;
+      }
+    }
+
+    .steps{
+      width:min(1200px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1rem;
+    }
+
+    .step{
+      padding:1.5rem;
+      border-top:1px solid rgba(255,117,25,.48);
+      background:linear-gradient(180deg,rgba(255,117,25,.055),transparent);
+    }
+
+    .step span{
+      color:var(--orange);
+      font-family:"Courier New",monospace;
+      font-size:.76rem;
+      font-weight:1000;
+    }
+
+    .step h3{margin:.8rem 0 .5rem}
+    .step p{margin:0;color:var(--muted);line-height:1.65}
+
+    .faq{
+      width:min(900px,100%);
+      margin:auto;
+    }
+
+    details{
+      border-bottom:1px solid var(--line);
+      padding:1.2rem 0;
+    }
+
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-size:1.05rem;
+      font-weight:850;
+    }
+
+    summary::-webkit-details-marker{display:none}
+
+    summary::after{
+      content:"+";
+      float:right;
+      color:var(--orange);
+      font-size:1.4rem;
+    }
+
+    details[open] summary::after{content:"−"}
+
+    details p{
+      max-width:760px;
+      padding-right:2rem;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .cta{
+      width:min(1100px,100%);
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:2rem;
+      padding:clamp(2rem,5vw,4rem);
+      border:1px solid var(--line);
+      border-radius:25px;
+      background:
+        radial-gradient(circle at 88% 10%,rgba(255,117,25,.16),transparent 18rem),
+        var(--panel);
+    }
+
+    .cta .eyebrow{margin-top:0}
+
+    .cta-actions{
+      min-width:max-content;
+      display:flex;
+      gap:.8rem;
+      flex-wrap:wrap;
+    }
+
+    footer{
+      padding:3rem clamp(1rem,7vw,7rem) 5rem;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .footer-brand{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:.7rem;
+      color:#fff;
+      font-weight:900;
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:1.3rem;
+      margin:1.4rem 0;
+    }
+
+    .footer-links a:hover{color:#fff}
+
+    .build-mark{
+      display:inline-flex;
+      margin-top:.7rem;
+      padding:.35rem .55rem;
+      border:1px solid rgba(255,117,25,.22);
+      border-radius:999px;
+      color:#adbac8;
+      background:rgba(255,117,25,.04);
+      font-size:.67rem;
+      letter-spacing:.12em;
+    }
+
+    .back-to-top{
+      position:fixed;
+      z-index:80;
+      right:1rem;
+      bottom:1rem;
+      width:46px;
+      height:46px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,117,25,.34);
+      border-radius:13px;
+      color:#fff;
+      background:rgba(15,20,27,.9);
+      backdrop-filter:blur(12px);
+      box-shadow:0 16px 42px rgba(0,0,0,.36);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      cursor:pointer;
+      transition:.23s ease;
+    }
+
+    .back-to-top.visible{
+      opacity:1;
+      visibility:visible;
+      transform:none;
+    }
+
+    .mobile-reserve{display:none}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:
+        opacity .72s ease var(--delay,0ms),
+        transform .72s ease var(--delay,0ms);
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+
+    /* Critical above-the-fold content must remain visible even if
+       IntersectionObserver is delayed or unavailable. */
+    .hero .reveal,
+    .status-bar.reveal{
+      opacity:1;
+      transform:none;
+    }
+
+
+    .waitlist-section{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 14% 34%,rgba(76,194,255,.065),transparent 23rem),
+        radial-gradient(circle at 88% 58%,rgba(255,117,25,.075),transparent 23rem);
+    }
+
+    .waitlist-layout{
+      width:min(1120px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+      gap:1.2rem;
+      align-items:start;
+    }
+
+    .waitlist-panel{
+      position:relative;
+      overflow:hidden;
+      padding:clamp(1.35rem,3vw,2rem);
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.014));
+      box-shadow:0 25px 70px rgba(0,0,0,.26);
+    }
+
+    .waitlist-panel::before{
+      content:"";
+      position:absolute;
+      right:-90px;
+      top:-90px;
+      width:220px;
+      height:220px;
+      border:1px dashed rgba(255,117,25,.13);
+      border-radius:50%;
+      animation:haloSpin 22s linear infinite;
+    }
+
+    .waitlist-panel h3{
+      position:relative;
+      margin:.2rem 0 .55rem;
+      font-size:1.45rem;
+    }
+
+    .waitlist-panel>p{
+      position:relative;
+      margin:0 0 1.35rem;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .waitlist-form{
+      position:relative;
+      display:grid;
+      gap:.9rem;
+    }
+
+    .field{
+      display:grid;
+      gap:.4rem;
+    }
+
+    .field label{
+      color:#dce2e9;
+      font-size:.8rem;
+      font-weight:850;
+    }
+
+    .field input,
+    .field select{
+      width:100%;
+      min-height:49px;
+      padding:.75rem .85rem;
+      border:1px solid var(--line);
+      border-radius:11px;
+      outline:none;
+      color:#fff;
+      background:#0b1016;
+      transition:border-color .2s ease,box-shadow .2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus{
+      border-color:rgba(255,117,25,.62);
+      box-shadow:0 0 0 4px rgba(255,117,25,.09);
+    }
+
+    .field select option{
+      color:#fff;
+      background:#0b1016;
+    }
+
+    .field-help{
+      color:#7f8b98;
+      font-size:.7rem;
+      line-height:1.45;
+    }
+
+    .public-choice{
+      display:flex;
+      gap:.65rem;
+      align-items:flex-start;
+      padding:.85rem;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:11px;
+      color:var(--muted);
+      background:rgba(255,255,255,.02);
+      font-size:.78rem;
+      line-height:1.5;
+    }
+
+    .public-choice input{
+      margin-top:.18rem;
+      accent-color:var(--orange);
+    }
+
+    .waitlist-message{
+      min-height:22px;
+      margin:0;
+      color:var(--muted);
+      font-size:.78rem;
+      line-height:1.5;
+    }
+
+    .waitlist-message.success{color:var(--green)}
+    .waitlist-message.error{color:#ff7b6d}
+
+    .waitlist-header{
+      position:relative;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:1rem;
+      margin-bottom:1.1rem;
+    }
+
+    .waitlist-count{
+      min-width:88px;
+      padding:.7rem .8rem;
+      border:1px solid rgba(76,194,255,.25);
+      border-radius:13px;
+      color:#dff5ff;
+      background:rgba(76,194,255,.065);
+      text-align:center;
+    }
+
+    .waitlist-count strong{
+      display:block;
+      font-size:1.35rem;
+      line-height:1;
+    }
+
+    .waitlist-count span{
+      color:#8db5c9;
+      font-size:.65rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    .backend-state{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      margin-top:.65rem;
+      color:#8e99a7;
+      font-size:.72rem;
+    }
+
+    .backend-state i{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#727c88;
+      box-shadow:0 0 10px rgba(114,124,136,.5);
+    }
+
+    .backend-state.connected i{
+      background:var(--green);
+      box-shadow:0 0 11px var(--green);
+    }
+
+    .backend-state.error i{
+      background:#ff6759;
+      box-shadow:0 0 11px #ff6759;
+    }
+
+    .waitlist-list{
+      position:relative;
+      display:grid;
+      gap:.65rem;
+      max-height:510px;
+      overflow:auto;
+      margin:0;
+      padding:0 .2rem 0 0;
+      list-style:none;
+      scrollbar-width:thin;
+    }
+
+    .waitlist-entry{
+      display:grid;
+      grid-template-columns:42px 1fr auto;
+      gap:.8rem;
+      align-items:center;
+      padding:.85rem;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:13px;
+      background:rgba(255,255,255,.024);
+    }
+
+    .waitlist-position{
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,117,25,.25);
+      border-radius:10px;
+      color:var(--gold);
+      background:rgba(255,117,25,.055);
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .waitlist-name{
+      min-width:0;
+    }
+
+    .waitlist-name strong{
+      display:block;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    .waitlist-name span{
+      color:var(--muted);
+      font-size:.7rem;
+    }
+
+    .waitlist-plan{
+      padding:.38rem .55rem;
+      border:1px solid rgba(76,194,255,.2);
+      border-radius:999px;
+      color:#cdefff;
+      background:rgba(76,194,255,.055);
+      font-size:.65rem;
+      font-weight:850;
+      white-space:nowrap;
+    }
+
+    .waitlist-empty{
+      padding:2rem 1rem;
+      border:1px dashed rgba(255,255,255,.11);
+      border-radius:14px;
+      color:var(--muted);
+      text-align:center;
+      line-height:1.65;
+    }
+
+    .waitlist-privacy{
+      margin:1rem 0 0;
+      color:#74808e;
+      font-size:.69rem;
+      line-height:1.55;
+    }
+
+    .honeypot{
+      position:absolute!important;
+      left:-10000px!important;
+      width:1px!important;
+      height:1px!important;
+      overflow:hidden!important;
+      opacity:0!important;
+      pointer-events:none!important;
+    }
+
+    @media(max-width:860px){
+      .waitlist-layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:520px){
+      .waitlist-entry{
+        grid-template-columns:38px 1fr;
+      }
+
+      .waitlist-plan{
+        grid-column:2;
+        justify-self:start;
+      }
+
+      .waitlist-header{
+        align-items:center;
+      }
+    }
+
+
+    .discord-verify-note{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:.8rem;
+      align-items:start;
+      padding:.9rem;
+      border:1px solid rgba(88,101,242,.28);
+      border-radius:12px;
+      background:linear-gradient(135deg,rgba(88,101,242,.1),rgba(88,101,242,.035));
+    }
+
+    .discord-mark{
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      color:#fff;
+      background:#5865f2;
+      box-shadow:0 0 20px rgba(88,101,242,.25);
+      font-weight:1000;
+    }
+
+    .discord-verify-note strong{
+      display:block;
+      color:#f3f5ff;
+      font-size:.85rem;
+    }
+
+    .discord-verify-note p{
+      margin:.25rem 0 0;
+      color:#9ca6ba;
+      font-size:.72rem;
+      line-height:1.5;
+    }
+
+    #waitlistSubmit[disabled]{
+      opacity:.68;
+      cursor:wait;
+      transform:none;
+    }
+
+
+    .forge-reaction{
+      position:absolute;
+      z-index:8;
+      left:50%;
+      bottom:-2rem;
+      display:grid;
+      grid-template-columns:auto auto;
+      column-gap:.48rem;
+      align-items:center;
+      min-width:205px;
+      padding:.62rem .82rem;
+      border:1px solid rgba(255,117,25,.24);
+      border-radius:999px;
+      background:rgba(8,10,14,.84);
+      box-shadow:0 18px 42px rgba(0,0,0,.42);
+      backdrop-filter:blur(12px);
+      transform:translateX(-50%);
+      pointer-events:none;
+    }
+
+    .forge-reaction > span{
+      grid-row:1/3;
+      font-size:1.05rem;
+    }
+
+    .forge-reaction strong{
+      color:#fff1d0;
+      font-size:.72rem;
+      line-height:1.1;
+    }
+
+    .forge-reaction small{
+      color:#8f9bad;
+      font-size:.61rem;
+      letter-spacing:.04em;
+    }
+
+    .furnace{
+      cursor:pointer;
+      outline:none;
+    }
+
+    .furnace:focus-visible{
+      border-radius:12px;
+      box-shadow:0 0 0 4px rgba(255,197,94,.28);
+    }
+
+    .furnace{
+      scale:1;
+      transition:
+        scale .72s cubic-bezier(.16,1,.3,1),
+        filter .72s cubic-bezier(.16,1,.3,1);
+    }
+
+    .furnace.is-stoked{
+      scale:1.052;
+      filter:
+        drop-shadow(0 52px 58px rgba(0,0,0,.78))
+        drop-shadow(0 0 88px rgba(255,98,20,.8));
+    }
+
+    .fire-window{
+      transition:
+        box-shadow .72s cubic-bezier(.16,1,.3,1),
+        filter .72s cubic-bezier(.16,1,.3,1);
+    }
+
+    .flame{
+      transition:filter .72s cubic-bezier(.16,1,.3,1);
+    }
+
+    .furnace.is-stoked .fire-window{
+      filter:saturate(1.1) brightness(1.08);
+      box-shadow:
+        0 0 105px rgba(255,103,22,.94),
+        inset 0 0 45px rgba(255,245,197,.84);
+    }
+
+    .furnace.is-stoked .flame{
+      filter:brightness(1.18) saturate(1.08);
+    }
+
+    .forge-reaction{
+      transition:
+        transform .62s cubic-bezier(.16,1,.3,1),
+        border-color .62s ease,
+        box-shadow .62s ease;
+    }
+
+    .forge-reaction.is-active{
+      transform:translateX(-50%) translateY(-5px) scale(1.025);
+      border-color:rgba(255,197,94,.44);
+      box-shadow:0 22px 50px rgba(255,93,18,.16);
+    }
+
+    .forge-click-spark{
+      position:absolute;
+      z-index:7;
+      left:50%;
+      top:66%;
+      width:5px;
+      height:11px;
+      border-radius:50%;
+      background:#ffd268;
+      box-shadow:0 0 10px rgba(255,111,23,.9);
+      pointer-events:none;
+      animation:forgeClickSpark 1s var(--spark-delay) cubic-bezier(.2,.75,.25,1) forwards;
+    }
+
+    .forge-units-section{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .forge-units-section::before{
+      content:"";
+      position:absolute;
+      inset:8% -10%;
+      background:
+        radial-gradient(circle at 20% 28%,rgba(255,117,25,.08),transparent 28%),
+        radial-gradient(circle at 82% 70%,rgba(76,194,255,.06),transparent 30%);
+      pointer-events:none;
+    }
+
+    .forge-inventory{
+      position:relative;
+      width:min(1120px,100%);
+      margin:0 auto 1.3rem;
+      display:flex;
+      justify-content:space-between;
+      gap:1.5rem;
+      align-items:center;
+      padding:1rem 1.15rem;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+      box-shadow:0 24px 70px rgba(0,0,0,.25);
+    }
+
+    .forge-inventory > div:first-child{
+      display:grid;
+      gap:.25rem;
+    }
+
+    .inventory-label{
+      color:var(--gold);
+      font-size:.66rem;
+      font-weight:1000;
+      letter-spacing:.14em;
+    }
+
+    .forge-inventory strong{
+      color:#edf1f7;
+      font-size:.9rem;
+    }
+
+    .inventory-meter{
+      display:grid;
+      grid-template-columns:repeat(4,34px);
+      gap:.46rem;
+    }
+
+    .meter-unit{
+      position:relative;
+      height:12px;
+      overflow:hidden;
+      border-radius:999px;
+      background:#3a424d;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+
+    .meter-unit::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      animation:meterGlow 2.2s ease-in-out infinite alternate;
+    }
+
+    .meter-unit.ember::after{
+      background:linear-gradient(90deg,#ff6f18,#ffc65f);
+    }
+
+    .meter-unit.blaze::after{
+      background:linear-gradient(90deg,#23a9e8,#76d9ff);
+    }
+
+    .meter-unit.inferno::after{
+      background:linear-gradient(90deg,#7d3eb5,#c075e8);
+    }
+
+    .meter-unit.pending{
+      opacity:.38;
+    }
+
+    .forge-unit-grid{
+      position:relative;
+      width:min(1120px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .forge-unit{
+      position:relative;
+      overflow:hidden;
+      min-height:230px;
+      padding:1.15rem;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:18px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+      box-shadow:0 25px 65px rgba(0,0,0,.32);
+    }
+
+    .forge-unit::before{
+      content:"";
+      position:absolute;
+      inset:auto -20% -42% 16%;
+      height:170px;
+      border-radius:50%;
+      opacity:.14;
+      filter:blur(8px);
+    }
+
+    .ember-unit::before{background:#ff761c}
+    .blaze-unit::before{background:#46c8ff}
+    .inferno-unit::before{background:#a64bd5}
+
+    .unit-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.75rem;
+      margin-bottom:1.2rem;
+    }
+
+    .unit-number{
+      color:#8e99aa;
+      font-size:.62rem;
+      font-weight:1000;
+      letter-spacing:.12em;
+    }
+
+    .unit-status{
+      display:inline-flex;
+      align-items:center;
+      gap:.36rem;
+      padding:.3rem .5rem;
+      border-radius:999px;
+      font-size:.61rem;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .unit-status i{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+    }
+
+    .unit-status.available{
+      color:#8ef0bd;
+      background:rgba(40,202,126,.1);
+      border:1px solid rgba(40,202,126,.22);
+    }
+
+    .unit-status.available i{
+      background:#32d786;
+      box-shadow:0 0 12px rgba(50,215,134,.85);
+    }
+
+    .unit-status.forging{
+      color:#d7a8ef;
+      background:rgba(166,75,213,.1);
+      border:1px solid rgba(166,75,213,.24);
+    }
+
+    .unit-status.forging i{
+      background:#aa50d7;
+      box-shadow:0 0 12px rgba(170,80,215,.82);
+      animation:forgingPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    .forge-unit h3{
+      margin:0 0 .35rem;
+      color:#f6f8fb;
+      font-size:1.35rem;
+    }
+
+    .forge-unit > p{
+      margin:0;
+      color:#9aa5b5;
+      font-size:.8rem;
+    }
+
+    .unit-plate{
+      position:absolute;
+      left:1.15rem;
+      right:1.15rem;
+      bottom:1.15rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.75rem;
+      padding:.7rem .78rem;
+      border:1px solid rgba(255,255,255,.075);
+      border-radius:11px;
+      background:rgba(5,8,12,.38);
+    }
+
+    .unit-plate span{
+      color:#7e8999;
+      font-size:.62rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .unit-plate strong{
+      color:#eef2f7;
+      font-size:.72rem;
+      text-align:right;
+    }
+
+    .why-forge-grid{
+      width:min(1080px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.1rem;
+    }
+
+    .why-forge-card{
+      position:relative;
+      min-height:270px;
+      padding:1.45rem;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:20px;
+      background:
+        radial-gradient(circle at 90% 5%,rgba(255,117,25,.1),transparent 10rem),
+        linear-gradient(145deg,#161d25,#0d1218);
+      box-shadow:0 28px 75px rgba(0,0,0,.36);
+    }
+
+    .why-forge-card::after{
+      content:"";
+      position:absolute;
+      left:1.45rem;
+      right:1.45rem;
+      bottom:0;
+      height:3px;
+      border-radius:999px 999px 0 0;
+      background:linear-gradient(90deg,var(--orange),var(--gold));
+      opacity:.72;
+    }
+
+    .why-icon{
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      margin-bottom:1.2rem;
+      border:1px solid rgba(255,117,25,.2);
+      border-radius:14px;
+      background:rgba(255,117,25,.07);
+      font-size:1.35rem;
+    }
+
+    .why-number{
+      position:absolute;
+      top:1rem;
+      right:1.2rem;
+      color:rgba(255,255,255,.08);
+      font-size:2.4rem;
+      font-weight:1000;
+    }
+
+    .why-forge-card h3{
+      margin:0 0 .7rem;
+      color:#f4f6fa;
+      font-size:1.12rem;
+    }
+
+    .why-forge-card p{
+      margin:0;
+      color:#9ba6b5;
+      line-height:1.7;
+      font-size:.82rem;
+    }
+
+    .tier-name{
+      display:inline-flex;
+      margin-top:.35rem;
+      padding:.28rem .48rem;
+      border-radius:999px;
+      font-size:.6rem;
+      font-weight:1000;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .ember-tier{
+      color:#ffc27c;
+      background:rgba(255,117,25,.1);
+      border:1px solid rgba(255,117,25,.22);
+    }
+
+    .blaze-tier{
+      color:#83ddff;
+      background:rgba(76,194,255,.1);
+      border:1px solid rgba(76,194,255,.24);
+    }
+
+    .inferno-tier{
+      color:#daa8f2;
+      background:rgba(170,80,215,.1);
+      border:1px solid rgba(170,80,215,.24);
+    }
+
+    .waitlist-message.success{
+      padding:.88rem 1rem;
+      border:1px solid rgba(52,211,153,.27);
+      border-radius:12px;
+      background:
+        linear-gradient(135deg,rgba(52,211,153,.1),rgba(52,211,153,.035));
+      color:#b6f5d4;
+      line-height:1.55;
+      font-weight:750;
+    }
+
+    @media(max-width:1050px){
+      .forge-unit-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:820px){
+      .why-forge-grid{
+        grid-template-columns:1fr;
+      }
+
+      .why-forge-card{
+        min-height:220px;
+      }
+    }
+
+    @media(max-width:620px){
+      .forge-inventory{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .forge-unit-grid{
+        grid-template-columns:1fr;
+      }
+
+      .forge-reaction{
+        bottom:-2.4rem;
+        transform:translateX(-50%) scale(.9);
+      }
+    }
+
+    @keyframes furnaceStoke{
+      0%{transform:scale(1)}
+      38%{transform:scale(1.045) rotate(-.7deg)}
+      70%{transform:scale(1.028) rotate(.5deg)}
+      100%{transform:scale(1)}
+    }
+
+    @keyframes forgeClickSpark{
+      0%{
+        opacity:0;
+        transform:translate(-50%,0) scale(.45) rotate(0);
+      }
+      15%{opacity:1}
+      100%{
+        opacity:0;
+        transform:
+          translate(
+            calc(-50% + var(--spark-x)),
+            var(--spark-y)
+          )
+          scale(.12)
+          rotate(220deg);
+      }
+    }
+
+    @keyframes meterGlow{
+      from{filter:brightness(.82)}
+      to{filter:brightness(1.22)}
+    }
+
+    @keyframes forgingPulse{
+      from{opacity:.45}
+      to{opacity:1}
+    }
+
+    @keyframes miniFire{
+      from{filter:brightness(.9)}
+      to{filter:brightness(1.3)}
+    }
+
+    @keyframes statusPulse{
+      0%,100%{transform:scale(.85);opacity:.65}
+      50%{transform:scale(1.18);opacity:1}
+    }
+
+    @keyframes titleFloat{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-11px)}
+    }
+
+    @keyframes titleHeat{
+      from{filter:brightness(.92) saturate(.94)}
+      to{filter:brightness(1.15) saturate(1.2)}
+    }
+
+    @keyframes titleLine{
+      0%,100%{transform:scaleX(.7);opacity:.52}
+      50%{transform:scaleX(1);opacity:1}
+    }
+
+    @keyframes haloPulse{
+      0%,100%{transform:scale(.93);opacity:.7}
+      50%{transform:scale(1.05);opacity:1}
+    }
+
+    @keyframes haloSpin{to{transform:rotate(360deg)}}
+
+    @keyframes furnaceFloat{
+      0%,100%{transform:translateY(0) rotate(-.35deg)}
+      50%{transform:translateY(-15px) rotate(.35deg)}
+    }
+
+    @keyframes shadowPulse{
+      0%,100%{transform:scaleX(1);opacity:.7}
+      50%{transform:scaleX(.87);opacity:.48}
+    }
+
+    @keyframes flameMove{
+      from{transform:scaleY(.8) skewX(-5deg);filter:brightness(.94)}
+      to{transform:scaleY(1.14) skewX(5deg);filter:brightness(1.24)}
+    }
+
+    @keyframes smokeRise{
+      0%{transform:translate(-50%,0) scale(.55);opacity:0}
+      14%{opacity:.24}
+      75%{opacity:.11}
+      100%{transform:translate(calc(-50% + 38px),-190px) scale(2);opacity:0}
+    }
+
+    @keyframes emberRise{
+      0%{transform:translate3d(0,0,0) scale(.4);opacity:0}
+      10%{opacity:.9}
+      70%{opacity:.44}
+      100%{transform:translate3d(var(--drift),-1150px,0) scale(1.15);opacity:0}
+    }
+
+    @keyframes buttonShine{
+      0%,62%{left:-80px}
+      82%,100%{left:calc(100% + 80px)}
+    }
+
+    @media(max-width:980px){
+      .menu{display:block}
+
+      .nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding:1rem;
+        border-bottom:1px solid var(--line);
+        background:#0c1016;
+      }
+
+      .nav.open{display:flex}
+      .nav a{padding:.75rem}
+      .nav a::after{display:none}
+
+      .status-bar{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .status-title{
+        grid-column:1/3;
+        padding:.2rem .5rem .55rem;
+      }
+
+      .status-item{border-left:0}
+
+      .feature-grid,
+      .setup-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .steps{grid-template-columns:repeat(2,1fr)}
+
+      .cta{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .cta-actions{min-width:0}
+    }
+
+    @media(max-width:650px){
+      .site-header{padding:.75rem 1rem}
+
+      .brand{
+        gap:.55rem;
+        font-size:.82rem;
+      }
+
+      .mini-furnace{
+        width:36px;
+        height:36px;
+      }
+
+      .hero{
+        min-height:900px;
+        padding-top:4.4rem;
+        padding-bottom:5rem;
+      }
+
+      .availability{
+        padding:.48rem .66rem;
+        font-size:.7rem;
+      }
+
+      .eyebrow{
+        margin-top:1.35rem;
+        font-size:.62rem;
+      }
+
+      .forge-title{
+        font-size:clamp(3rem,16vw,4.7rem);
+        letter-spacing:-.09em;
+      }
+
+      .forge-title span:last-child{
+        letter-spacing:-.08em;
+      }
+
+      .hero-subtitle{
+        max-width:340px;
+        margin-top:2.2rem;
+        font-size:.91rem;
+        line-height:1.62;
+      }
+
+      .air-gap{height:5.5rem}
+
+      .forge-halo{
+        width:410px;
+        max-width:110vw;
+      }
+
+      .furnace{width:210px}
+
+      .furnace-cap{
+        width:75px;
+        height:56px;
+        border-width:6px;
+      }
+
+      .furnace-cap::before{
+        left:-12px;
+        right:-12px;
+        height:12px;
+        border-width:4px;
+      }
+
+      .furnace-body{
+        height:210px;
+        border-width:10px;
+      }
+
+      .furnace-slot{
+        margin-top:25px;
+        height:17px;
+        border-width:4px;
+      }
+
+      .fire-window{
+        height:84px;
+        border-width:9px;
+      }
+
+      .flame.one{width:48px;height:78px}
+      .flame.two{width:58px;height:98px}
+      .flame.three{width:44px;height:70px}
+
+      .hero-actions{
+        width:100%;
+        margin-top:3.1rem;
+      }
+
+      .hero-actions .btn{width:100%}
+
+      .stats{
+        grid-template-columns:1fr 1fr;
+        gap:.45rem;
+        margin-top:1.5rem;
+      }
+
+      .stats div{padding:.72rem}
+
+      .status-bar{
+        margin-top:-1rem;
+        grid-template-columns:1fr 1fr;
+      }
+
+      .status-title{grid-column:1/3}
+
+      .feature-grid,
+      .setup-grid,
+      .steps{
+        grid-template-columns:1fr;
+      }
+
+      .setup-card{min-height:0}
+
+      .setup-note{
+        grid-template-columns:auto 1fr;
+      }
+
+      .setup-note a,
+      .setup-note .coming-soon-pill{
+        grid-column:1/3;
+        padding:.75rem;
+        border:1px solid rgba(255,117,25,.25);
+        border-radius:10px;
+        text-align:center;
+      }
+
+      .plan-top{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .plan-badge{
+        position:static;
+        display:inline-flex;
+        margin-bottom:1rem;
+      }
+
+      .cta-actions,
+      .cta-actions .btn{
+        width:100%;
+      }
+
+      .mobile-reserve{
+        position:fixed;
+        z-index:78;
+        left:.75rem;
+        right:4.6rem;
+        bottom:.75rem;
+        min-height:48px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:.5rem;
+        padding:.75rem 1rem;
+        border-radius:13px;
+        color:#211006;
+        background:linear-gradient(135deg,var(--gold),var(--orange));
+        box-shadow:0 18px 48px rgba(0,0,0,.45);
+        font-size:.82rem;
+        font-weight:900;
+      }
+
+      .back-to-top{
+        right:.75rem;
+        bottom:.75rem;
+        width:48px;
+        height:48px;
+      }
+
+      footer{padding-bottom:6rem}
+    }
+
+
+
+    /* Build 14: beginner-first conversion and usability layer */
+    [hidden]{display:none!important}
+
+    .confidence-strip{
+      position:relative;
+      z-index:6;
+      width:min(980px,100%);
+      margin:2.4rem auto 0;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:.72rem;
+    }
+
+    .confidence-strip div{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      column-gap:.58rem;
+      align-items:center;
+      padding:.9rem;
+      border:1px solid rgba(255,255,255,.075);
+      border-radius:13px;
+      background:rgba(255,255,255,.025);
+      text-align:left;
+    }
+
+    .confidence-strip div > span{
+      grid-row:1/3;
+      width:26px;
+      height:26px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:#132115;
+      background:#7be1a7;
+      font-size:.72rem;
+      font-weight:1000;
+    }
+
+    .confidence-strip strong{
+      color:#eef3f8;
+      font-size:.77rem;
+    }
+
+    .confidence-strip small{
+      color:#8793a2;
+      font-size:.64rem;
+      line-height:1.35;
+    }
+
+    .plan-finder-section{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .plan-finder-section::before{
+      content:"";
+      position:absolute;
+      inset:10% -20%;
+      background:radial-gradient(circle at center,rgba(255,117,25,.07),transparent 48%);
+      pointer-events:none;
+    }
+
+    .finder-options{
+      position:relative;
+      width:min(860px,100%);
+      margin:0 auto 1rem;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:.85rem;
+    }
+
+    .finder-choice{
+      min-height:154px;
+      display:grid;
+      place-items:center;
+      align-content:center;
+      gap:.35rem;
+      padding:1rem;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:17px;
+      color:#eff3f8;
+      background:linear-gradient(145deg,#171e26,#0d1218);
+      box-shadow:0 22px 60px rgba(0,0,0,.28);
+      cursor:pointer;
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    }
+
+    .finder-choice:hover,
+    .finder-choice.selected{
+      transform:translateY(-4px);
+      border-color:rgba(255,157,55,.55);
+      background:linear-gradient(145deg,rgba(255,117,25,.12),#11171e);
+      box-shadow:0 26px 70px rgba(255,91,14,.12);
+    }
+
+    .finder-choice:focus-visible{
+      outline:3px solid rgba(255,197,94,.38);
+      outline-offset:3px;
+    }
+
+    .finder-icon{
+      font-size:1.7rem;
+      margin-bottom:.2rem;
+    }
+
+    .finder-choice strong{
+      font-size:.9rem;
+    }
+
+    .finder-choice small{
+      color:#8f9baa;
+      font-size:.69rem;
+    }
+
+    .finder-result{
+      position:relative;
+      width:min(900px,100%);
+      margin:1rem auto 0;
+      display:grid;
+      grid-template-columns:auto minmax(0,1fr) auto;
+      gap:1rem;
+      align-items:center;
+      padding:1.15rem;
+      border:1px solid rgba(255,255,255,.085);
+      border-radius:18px;
+      background:rgba(255,255,255,.025);
+      box-shadow:0 24px 70px rgba(0,0,0,.25);
+      transition:border-color .3s ease,background .3s ease,transform .3s ease;
+    }
+
+    .finder-result.has-result{
+      transform:translateY(-2px);
+      border-color:rgba(255,117,25,.4);
+      background:linear-gradient(135deg,rgba(255,117,25,.08),rgba(255,255,255,.02));
+    }
+
+    .finder-result-icon{
+      width:56px;
+      height:56px;
+      display:grid;
+      place-items:center;
+      border-radius:15px;
+      color:var(--gold);
+      background:rgba(255,117,25,.1);
+      border:1px solid rgba(255,117,25,.22);
+      font-size:1.45rem;
+      font-weight:1000;
+    }
+
+    .finder-kicker{
+      color:var(--orange);
+      font-size:.62rem;
+      font-weight:1000;
+      letter-spacing:.12em;
+    }
+
+    .finder-result-copy h3{
+      margin:.18rem 0 .35rem;
+      color:#f3f6fa;
+      font-size:1.15rem;
+    }
+
+    .finder-result-copy p{
+      margin:0;
+      color:#9aa5b4;
+      font-size:.8rem;
+      line-height:1.55;
+    }
+
+    .finder-help{
+      margin:1rem auto 0;
+      color:#8f9baa;
+      text-align:center;
+      font-size:.78rem;
+    }
+
+    .finder-help strong{color:#e8edf3}
+
+    .plan-assurance{
+      margin:.7rem 0 0;
+      color:#9ce5bc;
+      font-size:.7rem;
+      font-weight:800;
+      text-align:center;
+    }
+
+    .simple-steps{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .simple-steps .step{
+      position:relative;
+      min-height:220px;
+      padding:1.4rem;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      background:linear-gradient(145deg,#151c24,#0c1117);
+      box-shadow:0 22px 60px rgba(0,0,0,.28);
+    }
+
+    .simple-steps .step span{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:13px;
+      color:#271307;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      font-family:inherit;
+      font-size:1rem;
+    }
+
+    .risk-reversal{
+      width:min(940px,100%);
+      margin:1.1rem auto 0;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:1rem;
+      align-items:center;
+      padding:1rem;
+      border:1px solid rgba(77,214,145,.22);
+      border-radius:17px;
+      background:rgba(77,214,145,.045);
+    }
+
+    .risk-reversal > span{
+      width:46px;
+      height:46px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:rgba(77,214,145,.1);
+      font-size:1.25rem;
+    }
+
+    .risk-reversal strong{color:#c9f6dc}
+    .risk-reversal p{
+      margin:.2rem 0 0;
+      color:#93a99d;
+      font-size:.77rem;
+      line-height:1.45;
+    }
+
+    .form-step-number{
+      width:24px;
+      height:24px;
+      display:inline-grid;
+      place-items:center;
+      margin-right:.35rem;
+      border-radius:8px;
+      color:#221105;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      font-size:.68rem;
+      font-weight:1000;
+    }
+
+    .no-payment-note{
+      display:flex;
+      gap:.5rem;
+      align-items:flex-start;
+      margin:0;
+      padding:.72rem .8rem;
+      border:1px solid rgba(77,214,145,.17);
+      border-radius:10px;
+      color:#a9c5b6;
+      background:rgba(77,214,145,.035);
+      font-size:.71rem;
+      line-height:1.45;
+    }
+
+    .smooth-spark{
+      animation-duration:1.35s;
+      animation-timing-function:cubic-bezier(.16,.72,.22,1);
+    }
+
+    @media(max-width:900px){
+      .confidence-strip,
+      .finder-options{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .finder-result,
+      .risk-reversal{
+        grid-template-columns:auto 1fr;
+      }
+
+      .finder-result .btn,
+      .risk-reversal .btn{
+        grid-column:1/-1;
+        width:100%;
+      }
+    }
+
+    @media(max-width:620px){
+      .confidence-strip,
+      .finder-options,
+      .simple-steps{
+        grid-template-columns:1fr;
+      }
+
+      .confidence-strip div{
+        min-height:70px;
+      }
+
+      .finder-choice{
+        min-height:112px;
+        grid-template-columns:auto 1fr;
+        grid-template-rows:auto auto;
+        justify-items:start;
+        text-align:left;
+      }
+
+      .finder-icon{
+        grid-row:1/3;
+        margin:0 .35rem 0 0;
+      }
+
+      .finder-result,
+      .risk-reversal{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .finder-result-icon,
+      .risk-reversal > span{
+        margin:auto;
+      }
+
+      .finder-result .btn,
+      .risk-reversal .btn{
+        grid-column:auto;
+      }
+    }
+
+
+
+    /* Build 17: launch package, policies, and centralized operations */
+    .ops-updated{
+      display:block;
+      margin-top:.35rem;
+      color:#7f8b99;
+      font-size:.68rem;
+      line-height:1.4;
+    }
+
+    .policy-section{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 18%,rgba(76,194,255,.055),transparent 22rem),
+        radial-gradient(circle at 88% 72%,rgba(255,117,25,.065),transparent 24rem);
+    }
+
+    .policy-grid{
+      width:min(1120px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .policy-card{
+      position:relative;
+      min-height:245px;
+      padding:1.35rem;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.085);
+      border-radius:18px;
+      background:linear-gradient(145deg,#151c24,#0c1117);
+      box-shadow:0 24px 65px rgba(0,0,0,.28);
+    }
+
+    .policy-card::after{
+      content:"";
+      position:absolute;
+      left:1.35rem;
+      right:1.35rem;
+      bottom:0;
+      height:2px;
+      border-radius:999px 999px 0 0;
+      background:linear-gradient(90deg,var(--blue),var(--orange));
+      opacity:.72;
+    }
+
+    .policy-number{
+      display:inline-grid;
+      place-items:center;
+      width:38px;
+      height:38px;
+      border:1px solid rgba(255,117,25,.23);
+      border-radius:11px;
+      color:var(--gold);
+      background:rgba(255,117,25,.065);
+      font-family:"Courier New",monospace;
+      font-size:.72rem;
+      font-weight:1000;
+    }
+
+    .policy-card h3{
+      margin:1rem 0 .55rem;
+      color:#f4f7fb;
+      font-size:1.02rem;
+    }
+
+    .policy-card p{
+      margin:0;
+      color:#98a4b3;
+      font-size:.8rem;
+      line-height:1.68;
+    }
+
+    .policy-action{
+      width:min(980px,100%);
+      margin:1.2rem auto 0;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:1.2rem;
+      align-items:center;
+      padding:1.15rem;
+      border:1px solid rgba(77,214,145,.22);
+      border-radius:17px;
+      background:rgba(77,214,145,.045);
+    }
+
+    .policy-action strong{color:#c9f6dc}
+    .policy-action p{
+      margin:.3rem 0 0;
+      color:#93a99d;
+      font-size:.77rem;
+      line-height:1.55;
+    }
+
+    @media(max-width:900px){
+      .policy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .policy-action{grid-template-columns:1fr}
+      .policy-action .btn{width:100%}
+    }
+
+    @media(max-width:620px){
+      .policy-grid{grid-template-columns:1fr}
+      .policy-card{min-height:0}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+
+      *,
+      *::before,
+      *::after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.001ms!important;
+      }
+    }
+  
+
+    /* Build 16: operations, trust, and performance layer */
+    .operations-section{
+      background:
+        radial-gradient(circle at 14% 24%,rgba(76,194,255,.055),transparent 24rem),
+        radial-gradient(circle at 88% 72%,rgba(255,117,25,.075),transparent 24rem);
+    }
+
+    .operations-shell{
+      width:min(1160px,100%);
+      margin:auto;
+      padding:1rem;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:24px;
+      background:linear-gradient(145deg,rgba(20,28,37,.96),rgba(10,14,19,.96));
+      box-shadow:0 34px 95px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.035);
+    }
+
+    .ops-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:.8rem;
+    }
+
+    .ops-card{
+      min-height:210px;
+      padding:1.2rem;
+      border:1px solid rgba(255,255,255,.075);
+      border-radius:17px;
+      background:rgba(255,255,255,.024);
+    }
+
+    .ops-label{
+      color:#7f8d9c;
+      font-size:.61rem;
+      font-weight:1000;
+      letter-spacing:.13em;
+    }
+
+    .ops-status-row{
+      display:flex;
+      align-items:center;
+      gap:.58rem;
+      margin:.9rem 0 .62rem;
+    }
+
+    .ops-status-row strong{
+      color:#f2f5f8;
+      font-size:.9rem;
+      line-height:1.35;
+    }
+
+    .ops-dot{
+      width:9px;
+      height:9px;
+      flex:0 0 auto;
+      border-radius:50%;
+    }
+
+    .ops-dot.available,
+    .ops-dot.protected{
+      background:var(--green);
+      box-shadow:0 0 12px var(--green);
+    }
+
+    .ops-dot.checking{
+      background:#7a8794;
+      box-shadow:0 0 11px rgba(122,135,148,.65);
+    }
+
+    .ops-dot.checking.connected{
+      background:var(--green);
+      box-shadow:0 0 12px var(--green);
+    }
+
+    .ops-dot.checking.error{
+      background:#ff6759;
+      box-shadow:0 0 12px #ff6759;
+    }
+
+    .ops-dot.review{
+      background:var(--orange);
+      box-shadow:0 0 12px var(--orange);
+    }
+
+    .ops-card p{
+      margin:0;
+      color:#909cab;
+      font-size:.76rem;
+      line-height:1.65;
+    }
+
+    .ops-footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1.2rem;
+      margin-top:.85rem;
+      padding:1rem;
+      border:1px solid rgba(255,197,94,.14);
+      border-radius:16px;
+      background:rgba(255,197,94,.035);
+    }
+
+    .ops-footer>div:first-child{
+      display:grid;
+      gap:.2rem;
+    }
+
+    .ops-footer strong{
+      color:#f2e4c7;
+      font-size:.84rem;
+    }
+
+    .ops-footer span{
+      color:#918a7f;
+      font-size:.72rem;
+    }
+
+    .ops-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+    }
+
+    .ops-actions .btn{
+      min-height:45px;
+      padding:.72rem .95rem;
+      font-size:.78rem;
+    }
+
+    .standards-section{
+      background:linear-gradient(180deg,transparent,rgba(255,117,25,.028),transparent);
+    }
+
+    .standards-grid{
+      width:min(1120px,100%);
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    .standard-card{
+      position:relative;
+      min-height:235px;
+      padding:1.35rem;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.085);
+      border-radius:19px;
+      background:linear-gradient(145deg,#151c24,#0c1117);
+      box-shadow:0 22px 62px rgba(0,0,0,.26);
+    }
+
+    .standard-card>span{
+      display:inline-grid;
+      place-items:center;
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      color:#251206;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      font-size:.72rem;
+      font-weight:1000;
+    }
+
+    .standard-card h3{
+      margin:1rem 0 .55rem;
+      color:#f3f6f9;
+      font-size:1.03rem;
+    }
+
+    .standard-card p{
+      margin:0;
+      color:#929fad;
+      font-size:.78rem;
+      line-height:1.68;
+    }
+
+    .page-paused .ember,
+    .page-paused .smoke,
+    .page-paused .flame,
+    .page-paused .forge-halo::before,
+    .page-paused .forge-halo::after,
+    .page-paused .plan::before{
+      animation-play-state:paused!important;
+    }
+
+    @media(max-width:1050px){
+      .ops-grid,
+      .standards-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:700px){
+      .operations-shell{padding:.75rem}
+      .ops-grid,
+      .standards-grid{grid-template-columns:1fr}
+      .ops-card{min-height:0}
+      .ops-footer{align-items:stretch;flex-direction:column}
+      .ops-actions,
+      .ops-actions .btn{width:100%}
+    }
+
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#home" aria-label="Forge Servers home">
+      <span class="mini-furnace" aria-hidden="true"></span>
+      <span>FORGE SERVERS</span>
+    </a>
+
+    <button class="menu" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#choose">Choose a Server</a>
+      <a href="#process">How It Works</a>
+      <a href="#inside-forge">Availability</a>
+      <a href="#waitlist">Join Waitlist</a>
+      <a href="#policies">Policies</a>
+      <a data-forge-status href="./status.html">Status</a>
+      <a href="#faq">Help</a>
+      <a class="nav-cta" data-forge-discord href="https://discord.gg/hSxWKUySJY" target="_blank" rel="noopener noreferrer">Discord</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="ember-field" id="emberField" aria-hidden="true"></div>
+
+      <div class="title-zone">
+        <div class="availability reveal">
+          <i aria-hidden="true"></i>
+          <span id="heroAvailabilityText">Only 3 servers available right now</span>
+        </div>
+
+        <p class="eyebrow reveal">MINECRAFT SERVER RENTALS</p>
+
+        <h1 class="forge-title reveal">
+          <span>FORGE</span>
+          <span>SERVERS</span>
+        </h1>
+
+        <p class="hero-subtitle reveal">
+          Choose a server, verify Discord, and save your place. No payment is required to join the waitlist, and Forge Staff checks your setup before you pay.
+        </p>
+
+        <div class="air-gap" aria-hidden="true"></div>
+
+        <div class="forge-stage reveal" id="forgeStage">
+          <div class="forge-halo" aria-hidden="true"></div>
+          <div class="forge-floor" aria-hidden="true"></div>
+          <div class="furnace-shadow" aria-hidden="true"></div>
+
+          <div
+            class="furnace"
+            id="heroFurnace"
+            role="button"
+            tabindex="0"
+            aria-label="Stoke the animated Forge Servers furnace"
+          >
+            <span class="smoke s1" aria-hidden="true"></span>
+            <span class="smoke s2" aria-hidden="true"></span>
+            <span class="smoke s3" aria-hidden="true"></span>
+
+            <div class="furnace-cap"></div>
+
+            <div class="furnace-body">
+              <i class="rivet r1"></i>
+              <i class="rivet r2"></i>
+              <i class="rivet r3"></i>
+              <i class="rivet r4"></i>
+
+              <div class="furnace-slot"></div>
+
+              <div class="fire-window">
+                <span class="flame one"></span>
+                <span class="flame two"></span>
+                <span class="flame three"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="forge-reaction" id="forgeReaction" aria-live="polite">
+            <span aria-hidden="true">🔥</span>
+            <strong>Tap the furnace</strong>
+            <small>Stoke the forge</small>
+          </div>
+        </div>
+
+       <div class="hero-actions reveal">
+  <a class="btn btn-primary" href="#choose">Help Me Choose</a>
+  <a class="btn btn-secondary" href="#waitlist">Join the Waitlist</a>
+  <a
+    class="btn btn-secondary"
+    data-forge-status href="./status.html"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    🟢 Live Status
+  </a>
+</div>
+
+        <div class="confidence-strip reveal" aria-label="Simple service promises">
+          <div><span aria-hidden="true">✓</span><strong>No payment to join</strong><small>Save your place first</small></div>
+          <div><span aria-hidden="true">✓</span><strong>Setup checked first</strong><small>Staff confirms compatibility</small></div>
+          <div><span aria-hidden="true">✓</span><strong>Clear monthly prices</strong><small>$5 or $10 per month</small></div>
+          <div><span aria-hidden="true">✓</span><strong>Direct Discord help</strong><small>Talk with Forge Staff</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="status-bar reveal" aria-label="Quick Forge Servers facts">
+      <div class="status-title">QUICK FACTS</div>
+
+      <div class="status-item">
+        <i class="online" aria-hidden="true"></i>
+        <span>Join waitlist</span>
+        <strong>Free</strong>
+      </div>
+
+      <div class="status-item">
+        <i class="online" aria-hidden="true"></i>
+        <span>Setup review</span>
+        <strong>Before payment</strong>
+      </div>
+
+      <div class="status-item">
+        <i class="beta" aria-hidden="true"></i>
+        <span>Available now</span>
+        <strong id="quickAvailableCount">3 servers</strong>
+      </div>
+
+      <div class="status-item">
+        <i class="price" aria-hidden="true"></i>
+        <span>Monthly plans</span>
+        <strong>$5 or $10</strong>
+      </div>
+    </section>
+
+    <section class="section operations-section" id="operations">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SERVICE OPERATIONS</p>
+        <h2>Clear capacity. Manual approval. No surprise checkout.</h2>
+        <p>
+          Forge Servers uses limited hardware and reviews every setup before payment.
+          This dashboard keeps the service rules and current inventory easy to understand.
+        </p>
+      </div>
+
+      <div class="operations-shell reveal">
+        <div class="ops-grid">
+          <article class="ops-card">
+            <span class="ops-label">CURRENT CAPACITY</span>
+            <div class="ops-status-row">
+              <i class="ops-dot available" aria-hidden="true"></i>
+              <strong id="opsCapacity">3 servers available</strong>
+            </div>
+            <p id="opsCapacityDetail">Two Starter units and one Standard unit are available.</p>
+          </article>
+
+          <article class="ops-card">
+            <span class="ops-label">WAITLIST SYSTEM</span>
+            <div class="ops-status-row">
+              <i class="ops-dot checking" id="opsWaitlistDot" aria-hidden="true"></i>
+              <strong id="opsWaitlistStatus">Checking connection…</strong>
+            </div>
+            <p>Public Minecraft names load from the connected waitlist. Discord identities stay private.</p>
+          </article>
+
+          <article class="ops-card">
+            <span class="ops-label">SETUP REVIEW</span>
+            <div class="ops-status-row">
+              <i class="ops-dot review" aria-hidden="true"></i>
+              <strong>Manual review before payment</strong>
+            </div>
+            <p>Forge Staff confirms plan compatibility, availability, and setup requirements first.</p>
+          </article>
+
+          <article class="ops-card">
+            <span class="ops-label">PAYMENT FLOW</span>
+            <div class="ops-status-row">
+              <i class="ops-dot protected" aria-hidden="true"></i>
+              <strong>No charge to join</strong>
+            </div>
+            <p>Payment instructions are sent privately only after the request is approved.</p>
+          </article>
+        </div>
+
+        <div class="ops-footer">
+          <div>
+            <strong>Availability is intentionally limited.</strong>
+            <span id="opsInventoryNote">Final availability is confirmed by Forge Staff before payment.</span>
+            <small class="ops-updated" id="operationsLastUpdated">Loading the centralized operations file…</small>
+          </div>
+          <div class="ops-actions">
+            <a
+              class="btn btn-secondary"
+              data-forge-status
+              href="./status.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Open Status Page ↗</a>
+            <a
+              class="btn btn-primary"
+              data-forge-discord
+              href="https://discord.gg/hSxWKUySJY"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ask Forge Staff</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section plan-finder-section" id="choose">
+      <div class="section-heading reveal">
+        <p class="eyebrow">START HERE</p>
+        <h2>How many people will play?</h2>
+        <p>Choose the closest answer. We will show the simplest recommendation.</p>
+      </div>
+
+      <div class="finder-options reveal" role="group" aria-label="Choose your player count or server type">
+        <button class="finder-choice" type="button" data-choice="starter" aria-pressed="false">
+          <span class="finder-icon" aria-hidden="true">👥</span>
+          <strong>1–5 players</strong>
+          <small>Small group</small>
+        </button>
+
+        <button class="finder-choice" type="button" data-choice="standard" aria-pressed="false">
+          <span class="finder-icon" aria-hidden="true">🏰</span>
+          <strong>6–20 players</strong>
+          <small>Recommended · 25 maximum</small>
+        </button>
+
+        <button class="finder-choice" type="button" data-choice="mods" aria-pressed="false">
+          <span class="finder-icon" aria-hidden="true">🧩</span>
+          <strong>I want mods</strong>
+          <small>Forge or Fabric</small>
+        </button>
+      </div>
+
+      <div class="finder-result reveal" id="finderResult" aria-live="polite">
+        <div class="finder-result-icon" id="finderResultIcon" aria-hidden="true">?</div>
+        <div class="finder-result-copy">
+          <span class="finder-kicker">YOUR RECOMMENDATION</span>
+          <h3 id="finderResultTitle">Pick one option above</h3>
+          <p id="finderResultText">You do not need to understand RAM or technical server terms. Choose your group size and we will point you to the right plan.</p>
+        </div>
+        <a class="btn btn-primary plan-select finder-plan-action" id="finderPlanAction" href="#waitlist" data-plan="Either" hidden>Choose This Plan</a>
+        <a class="btn btn-secondary finder-discord-action" id="finderDiscordAction" data-forge-discord href="https://discord.gg/hSxWKUySJY" target="_blank" rel="noopener noreferrer" hidden>Ask About Mods</a>
+      </div>
+
+      <p class="finder-help reveal">
+        Still not sure? Choose <strong>Either available plan</strong> in the waitlist form and Forge Staff will help.
+      </p>
+    </section>
+
+    <section class="section forge-units-section" id="inside-forge">
+      <div class="section-heading reveal">
+        <p class="eyebrow">AVAILABLE RIGHT NOW</p>
+        <h2>See every server at a glance</h2>
+        <p>Green means available. “Being forged” means the server is not ready yet.</p>
+      </div>
+
+      <div class="forge-inventory reveal">
+        <div>
+          <span class="inventory-label">CURRENT INVENTORY</span>
+          <strong id="inventorySummary">3 available now · 1 being forged</strong>
+        </div>
+
+        <div class="inventory-meter" aria-label="Three available units and one coming-soon unit">
+          <span class="meter-unit ember" title="Forge Unit 01 available"></span>
+          <span class="meter-unit ember" title="Forge Unit 02 available"></span>
+          <span class="meter-unit blaze" title="Forge Unit 03 available"></span>
+          <span class="meter-unit inferno pending" title="Forge Unit 04 coming soon"></span>
+        </div>
+      </div>
+
+      <div class="forge-unit-grid">
+        <article class="forge-unit ember-unit reveal">
+          <div class="unit-top">
+            <span class="unit-number">FORGE UNIT 01</span>
+            <span class="unit-status available">
+              <i aria-hidden="true"></i>
+              Available
+            </span>
+          </div>
+          <h3>Ember Tier</h3>
+          <p>Starter · 4 GB RAM</p>
+          <div class="unit-plate">
+            <span>Recommended</span>
+            <strong>1–5 players</strong>
+          </div>
+        </article>
+
+        <article class="forge-unit ember-unit reveal">
+          <div class="unit-top">
+            <span class="unit-number">FORGE UNIT 02</span>
+            <span class="unit-status available">
+              <i aria-hidden="true"></i>
+              Available
+            </span>
+          </div>
+          <h3>Ember Tier</h3>
+          <p>Starter · 4 GB RAM</p>
+          <div class="unit-plate">
+            <span>Recommended</span>
+            <strong>1–5 players</strong>
+          </div>
+        </article>
+
+        <article class="forge-unit blaze-unit reveal">
+          <div class="unit-top">
+            <span class="unit-number">FORGE UNIT 03</span>
+            <span class="unit-status available">
+              <i aria-hidden="true"></i>
+              Available
+            </span>
+          </div>
+          <h3>Blaze Tier</h3>
+          <p>Standard · 8 GB DDR3</p>
+          <div class="unit-plate">
+            <span>Recommended</span>
+            <strong>6–20 players</strong>
+          </div>
+        </article>
+
+        <article class="forge-unit inferno-unit reveal">
+          <div class="unit-top">
+            <span class="unit-number">FORGE UNIT 04</span>
+            <span class="unit-status forging">
+              <i aria-hidden="true"></i>
+              Being forged
+            </span>
+          </div>
+          <h3>Inferno Tier</h3>
+          <p>Modded · 12 GB RAM</p>
+          <div class="unit-plate">
+            <span>Purpose</span>
+            <strong>Forge + Fabric</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section why-forge-section" id="features">
+      <div class="section-heading reveal">
+        <p class="eyebrow">WHY CHOOSE FORGE</p>
+        <h2>Simple service with real communication</h2>
+        <p>Clear prices, limited availability, and direct help instead of a confusing automated checkout.</p>
+      </div>
+
+      <div class="why-forge-grid">
+        <article class="why-forge-card reveal">
+          <div class="why-icon" aria-hidden="true">🛠️</div>
+          <span class="why-number">01</span>
+          <h3>Hardware we manage</h3>
+          <p>
+            Every active plan is tied to a limited Forge unit instead of an unclear unlimited inventory.
+          </p>
+        </article>
+
+        <article class="why-forge-card reveal">
+          <div class="why-icon" aria-hidden="true">🤝</div>
+          <span class="why-number">02</span>
+          <h3>Direct support</h3>
+          <p>
+            Setup questions, approvals, and support are handled through private Discord communication with Forge Staff.
+          </p>
+        </article>
+
+        <article class="why-forge-card reveal">
+          <div class="why-icon" aria-hidden="true">🧱</div>
+          <span class="why-number">03</span>
+          <h3>Limited capacity</h3>
+          <p>
+            Availability stays intentionally limited so the service does not promise more server space than it currently has.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section setup-section" id="setups">
+      <div class="section-heading reveal">
+        <p class="eyebrow">OPTIONAL TECHNICAL DETAILS</p>
+        <h2>You do not need to know these terms</h2>
+        <p>Forge Staff can help you choose. These details are here only for players who already know what setup they want.</p>
+      </div>
+
+      <div class="setup-grid">
+        <article class="card setup-card reveal">
+          <div class="cube grass" aria-hidden="true"></div>
+          <h3>Vanilla</h3>
+          <p>The original Minecraft experience for friends and straightforward survival worlds.</p>
+          <small>Classic setup</small>
+        </article>
+
+        <article class="card setup-card reveal">
+          <div class="cube paper" aria-hidden="true"></div>
+          <h3>Paper</h3>
+          <p>A performance-focused option commonly used for plugins and community servers.</p>
+          <small>Plugins + performance</small>
+        </article>
+
+        <article class="card setup-card reveal">
+          <div class="cube fabric" aria-hidden="true"></div>
+          <h3>Fabric</h3>
+          <p>Fabric mods are allowed, but the current 4 GB and 8 GB plans are not recommended for modded gameplay.</p>
+          <small>12 GB mod plan coming soon</small>
+        </article>
+
+        <article class="card setup-card reveal">
+          <div class="cube forge" aria-hidden="true"></div>
+          <h3>Forge</h3>
+          <p>Forge mods are allowed, but the current 4 GB and 8 GB plans are not recommended for modded gameplay.</p>
+          <small>12 GB mod plan coming soon</small>
+        </article>
+
+        <article class="card setup-card reveal">
+          <div class="cube plugin" aria-hidden="true"></div>
+          <h3>Plugins</h3>
+          <p>Ask about permissions, homes, economy, protection, and other server tools.</p>
+          <small>Community features</small>
+        </article>
+
+        <article class="card setup-card reveal">
+          <div class="cube world" aria-hidden="true"></div>
+          <h3>Your world</h3>
+          <p>Bring an existing world and discuss its size and upload requirements before reserving.</p>
+          <small>World migration</small>
+        </article>
+      </div>
+
+      <div class="setup-note reveal">
+        <span aria-hidden="true">⚒️</span>
+        <p><strong>Mods are allowed on every server.</strong> They are not recommended on the current 4 GB or 8 GB plans. The upcoming 12 GB plan will be the recommended option for modded servers.</p>
+        <a data-forge-discord href="https://discord.gg/hSxWKUySJY" target="_blank" rel="noopener noreferrer">Ask Forge Staff →</a>
+      </div>
+    </section>
+
+    <section class="section plan-section" id="server">
+      <div class="section-heading reveal">
+        <p class="eyebrow">AVAILABLE SERVERS</p>
+        <h2>Choose your Forge server</h2>
+        <p>Two Starter servers and one Standard server are currently available. Choose the recommended player range for the smoothest gameplay.</p>
+      </div>
+
+      <div class="plans-grid">
+        <article class="plan reveal">
+          <div class="plan-badge" id="starterAvailabilityBadge">2 AVAILABLE</div>
+
+          <div class="plan-top">
+            <div>
+              <div class="plan-label">STARTER SERVER</div>
+              <h3>Forge Starter</h3>
+              <span class="tier-name ember-tier">Ember Tier</span>
+            </div>
+
+            <div class="price">
+              <strong>$5</strong>
+              <span>/month</span>
+            </div>
+          </div>
+
+          <div class="specs">
+            <div><span>RAM</span><strong>4 GB</strong></div>
+            <div class="recommended-spec"><span>Best for</span><strong>1–5 players</strong></div>
+            <div class="limit-spec"><span>Maximum</span><strong>10-player limit</strong></div>
+            <div><span>Drive</span><strong>SSD powered</strong></div>
+            <div><span>Backups</span><strong>Available</strong></div>
+            <div><span>Availability</span><strong id="starterAvailabilitySpec">2 servers</strong></div>
+          </div>
+
+          <a class="btn btn-primary plan-select" style="width:100%" href="#waitlist" data-plan="Starter">Choose Starter</a>
+          <p class="plan-assurance">✓ No payment until Forge Staff approves your setup</p>
+
+          <p class="plan-note">
+            Best for small Vanilla, Paper, or plugin-based groups. Mods are allowed, but this plan is not recommended for modded servers.
+          </p>
+        </article>
+
+        <article class="plan standard reveal">
+          <div class="plan-badge" id="standardAvailabilityBadge">RECOMMENDED · 1 AVAILABLE</div>
+
+          <div class="plan-top">
+            <div>
+              <div class="plan-label">STANDARD SERVER</div>
+              <h3>Forge Standard</h3>
+              <span class="tier-name blaze-tier">Blaze Tier</span>
+            </div>
+
+            <div class="price">
+              <strong>$10</strong>
+              <span>/month</span>
+            </div>
+          </div>
+
+          <div class="specs">
+            <div><span>RAM</span><strong>8 GB DDR3</strong></div>
+            <div class="recommended-spec"><span>Best for</span><strong>6–20 players</strong></div>
+            <div class="limit-spec"><span>Maximum</span><strong>25-player limit</strong></div>
+            <div><span>Drive</span><strong>SSD powered</strong></div>
+            <div><span>Backups</span><strong>Available</strong></div>
+            <div><span>Availability</span><strong id="standardAvailabilitySpec">1 server</strong></div>
+          </div>
+
+          <a class="btn btn-primary plan-select" style="width:100%" href="#waitlist" data-plan="Standard">Choose Standard</a>
+          <p class="plan-assurance">✓ No payment until Forge Staff approves your setup</p>
+
+          <p class="plan-note">
+            Recommended for larger Vanilla, Paper, or plugin-based communities. Mods are allowed, but this plan is not recommended for modded servers.
+          </p>
+        </article>
+
+        <article class="plan modded coming-soon-card reveal">
+          <div class="plan-badge">COMING SOON</div>
+
+          <div class="plan-top">
+            <div>
+              <div class="plan-label">MODDED SERVER</div>
+              <h3>Forge Modded</h3>
+              <span class="tier-name inferno-tier">Inferno Tier</span>
+            </div>
+
+            <div class="price coming-price">
+              <strong>12 GB</strong>
+              <span>RAM</span>
+            </div>
+          </div>
+
+          <div class="specs">
+            <div><span>Recommended for</span><strong>Forge + Fabric</strong></div>
+            <div><span>Modpacks</span><strong>Larger setups</strong></div>
+            <div><span>Player capacity</span><strong>Announced at launch</strong></div>
+            <div><span>Drive</span><strong>SSD powered</strong></div>
+            <div><span>Backups</span><strong>Available</strong></div>
+            <div><span>Availability</span><strong>Coming soon</strong></div>
+          </div>
+
+          <button class="btn btn-disabled" style="width:100%" type="button" disabled>Coming Soon</button>
+
+          <p class="plan-note">
+            This will be the recommended plan for modded Minecraft. Pricing and final capacity will be announced before launch.
+          </p>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section simple-process-section" id="process">
+      <div class="section-heading reveal">
+        <p class="eyebrow">THREE SIMPLE STEPS</p>
+        <h2>Choose, verify, and wait for confirmation</h2>
+        <p>No checkout maze and no payment before your setup is reviewed.</p>
+      </div>
+
+      <div class="steps simple-steps">
+        <article class="step reveal">
+          <span>1</span>
+          <h3>Choose a server</h3>
+          <p>Pick Starter, Standard, or Either. The plan finder above can choose for you.</p>
+        </article>
+
+        <article class="step reveal">
+          <span>2</span>
+          <h3>Verify Discord</h3>
+          <p>Enter your Minecraft name and connect Discord so Forge Staff can contact the correct person.</p>
+        </article>
+
+        <article class="step reveal">
+          <span>3</span>
+          <h3>Staff confirms everything</h3>
+          <p>Forge Staff checks availability and compatibility. Payment instructions come only after approval.</p>
+        </article>
+      </div>
+
+      <div class="risk-reversal reveal">
+        <span aria-hidden="true">🛡️</span>
+        <div>
+          <strong>Joining the waitlist does not charge you.</strong>
+          <p>You decide whether to continue after Forge Staff confirms the server can handle your setup.</p>
+        </div>
+        <a class="btn btn-primary" href="#waitlist">Join the Waitlist</a>
+      </div>
+    </section>
+
+
+    <section class="section waitlist-section" id="waitlist">
+      <div class="section-heading reveal">
+        <p class="eyebrow">JOIN THE WAITLIST</p>
+        <h2>Finish in three clear steps</h2>
+        <p>
+          There is no payment on this form. Enter your Minecraft name, choose a server, and verify Discord so Forge Staff can contact you.
+        </p>
+      </div>
+
+      <div class="waitlist-layout">
+        <article class="waitlist-panel reveal">
+          <h3>Your waitlist entry</h3>
+          <p>Complete the numbered fields below. That is all you need to do.</p>
+
+          <form class="waitlist-form" id="waitlistForm" novalidate>
+            <div class="field">
+              <label for="minecraftUsername"><span class="form-step-number">1</span> Minecraft username</label>
+              <input
+                id="minecraftUsername"
+                name="minecraftUsername"
+                type="text"
+                minlength="2"
+                maxlength="32"
+                autocomplete="off"
+                placeholder="Your Minecraft name"
+                required
+              >
+              <span class="field-help">Java or Bedrock username. Letters, numbers, spaces, underscores, periods, and hyphens are accepted.</span>
+            </div>
+
+            <div class="field">
+              <label for="waitlistPlan"><span class="form-step-number">2</span> Choose a server</label>
+              <select id="waitlistPlan" name="plan" required>
+                <option value="">Choose a plan</option>
+                <option value="Starter">Starter — 4 GB — $5/month</option>
+                <option value="Standard">Standard — 8 GB DDR3 — $10/month</option>
+                <option value="Either">Either available plan</option>
+              </select>
+            </div>
+
+            <label class="public-choice">
+              <input id="publicDisplay" name="publicDisplay" type="checkbox" value="yes" checked>
+              <span>Show my Minecraft username on the public website waitlist. My verified Discord identity stays private and is visible only to Forge Staff.</span>
+            </label>
+
+            <div class="discord-verify-note">
+              <span class="discord-mark" aria-hidden="true">✓</span>
+              <div>
+                <strong><span class="form-step-number">3</span> Verify Discord</strong>
+                <p>Discord asks for basic account identification only. Forge Servers never receives your password or private messages.</p>
+              </div>
+            </div>
+
+            <p class="no-payment-note"><span aria-hidden="true">🔒</span> This button only verifies Discord and joins the waitlist. It does not charge you.</p>
+
+            <button class="btn btn-primary" id="waitlistSubmit" type="submit">
+              Continue with Discord — No Payment
+            </button>
+
+            <p class="waitlist-message" id="waitlistMessage" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+
+        <article class="waitlist-panel reveal">
+          <div class="waitlist-header">
+            <div>
+              <h3>Current waitlist</h3>
+              <div class="backend-state" id="backendState">
+                <i aria-hidden="true"></i>
+                <span>Connecting to waitlist…</span>
+              </div>
+            </div>
+
+            <div class="waitlist-count">
+              <strong id="waitlistCount">—</strong>
+              <span>waiting</span>
+            </div>
+          </div>
+
+          <ol class="waitlist-list" id="waitlistList">
+            <li class="waitlist-empty">Loading the public waitlist…</li>
+          </ol>
+
+          <p class="waitlist-privacy">
+            Only Minecraft usernames with public-display permission appear here. Discord usernames remain private. Positions may change when entries are accepted or removed.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section standards-section" id="standards">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SERVICE STANDARDS</p>
+        <h2>What Forge promises—and what it does not fake.</h2>
+        <p>
+          Trust comes from clear expectations. Forge Servers does not invent customer counts,
+          uptime percentages, reviews, or unlimited capacity.
+        </p>
+      </div>
+
+      <div class="standards-grid">
+        <article class="standard-card reveal">
+          <span aria-hidden="true">01</span>
+          <h3>Real inventory only</h3>
+          <p>Every available plan is tied to a limited Forge unit shown on this website.</p>
+        </article>
+
+        <article class="standard-card reveal">
+          <span aria-hidden="true">02</span>
+          <h3>Compatibility before payment</h3>
+          <p>Your world, plugins, mods, and player count are reviewed before payment instructions are sent.</p>
+        </article>
+
+        <article class="standard-card reveal">
+          <span aria-hidden="true">03</span>
+          <h3>Private Discord support</h3>
+          <p>Approvals and support happen through private communication with Forge Staff—not in the public waitlist.</p>
+        </article>
+
+        <article class="standard-card reveal">
+          <span aria-hidden="true">04</span>
+          <h3>Backups explained honestly</h3>
+          <p>Backups are available, while the exact schedule and restoration process are confirmed in your ticket.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="section policy-section" id="policies">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SERVICE POLICIES</p>
+        <h2>Know the rules before you pay.</h2>
+        <p>
+          The waitlist is free and is not a purchase. Final setup details, support scope,
+          backup expectations, and payment instructions are confirmed privately before service begins.
+        </p>
+      </div>
+
+      <div class="policy-grid">
+        <article class="policy-card reveal">
+          <span class="policy-number">01</span>
+          <h3>Approval comes first</h3>
+          <p>Forge Staff confirms capacity, edition, version, software, player count, and world requirements before requesting payment.</p>
+        </article>
+
+        <article class="policy-card reveal">
+          <span class="policy-number">02</span>
+          <h3>Month-to-month service</h3>
+          <p>Starter is $5 per month and Standard is $10 per month. Any renewal method and due date must be confirmed in writing through Discord.</p>
+        </article>
+
+        <article class="policy-card reveal">
+          <span class="policy-number">03</span>
+          <h3>Backups are defined in the ticket</h3>
+          <p>Backups are available, but schedule, retention, restoration steps, and any limits are confirmed before payment. Keep your own world copy too.</p>
+        </article>
+
+        <article class="policy-card reveal">
+          <span class="policy-number">04</span>
+          <h3>No hidden uptime claim</h3>
+          <p>Forge Servers does not advertise an uptime percentage or response-time guarantee unless one is explicitly published and supported by real records.</p>
+        </article>
+
+        <article class="policy-card reveal">
+          <span class="policy-number">05</span>
+          <h3>Safe and lawful use only</h3>
+          <p>No malware, attacks, unlawful activity, harassment, credential theft, or attempts to access other customers, private systems, or hardware.</p>
+        </article>
+
+        <article class="policy-card reveal">
+          <span class="policy-number">06</span>
+          <h3>Private support and cancellation</h3>
+          <p>Support and cancellation requests are handled through the verified Discord ticket. Future service stops after the agreed paid period ends.</p>
+        </article>
+      </div>
+
+      <div class="policy-action reveal">
+        <div>
+          <strong>Already approved by Forge Staff?</strong>
+          <p>Use the customer setup page to prepare a clean technical summary for your Discord ticket. It stores nothing and never asks for passwords.</p>
+        </div>
+        <a class="btn btn-primary" data-forge-onboarding href="./onboarding.html">Open Customer Setup</a>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-heading reveal">
+        <p class="eyebrow">COMMON QUESTIONS</p>
+        <h2>Before you reserve</h2>
+      </div>
+
+      <div class="faq reveal">
+        <details>
+          <summary>How much does a server cost?</summary>
+          <p>The 4 GB Starter plan is $5 per month. The 8 GB DDR3 Standard plan is $10 per month.</p>
+        </details>
+
+        <details>
+          <summary>How many servers are available?</summary>
+          <p id="faqAvailabilityAnswer">There are currently three servers: two 4 GB Starter servers and one 8 GB DDR3 Standard server.</p>
+        </details>
+
+        <details>
+          <summary>How many players are recommended?</summary>
+          <p>The 4 GB Starter server allows a maximum of 10 players, but up to 5 is recommended for fast gameplay. The 8 GB Standard server allows a maximum of 25 players, but up to 20 is recommended for fast gameplay.</p>
+        </details>
+
+        <details>
+          <summary>Can I use mods or plugins?</summary>
+          <p>Yes. There is no restriction against using mods on the 4 GB or 8 GB servers, but modded gameplay is not recommended on either current plan. A 12 GB server intended for mods is coming soon.</p>
+        </details>
+
+        <details>
+          <summary>Can I upload an existing world?</summary>
+          <p>Potentially. Share the world size and relevant information in the ticket so Forge Staff can review the request.</p>
+        </details>
+
+        <details>
+          <summary>How do I pay?</summary>
+          <p>The payment method has not been permanently selected. Approved customers receive manual payment instructions after availability and compatibility are confirmed.</p>
+        </details>
+
+        <details>
+          <summary>Are backups included?</summary>
+          <p>Backups are available for every Starter and Standard server. Confirm the backup schedule and restoration process in your Discord ticket.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cta reveal">
+        <div>
+          <p class="eyebrow">STILL NOT SURE?</p>
+          <h2>Choose “Either” and let staff help</h2>
+          <p>You do not need to understand every technical detail. Join the waitlist and Forge Staff will confirm the best available option before payment.</p>
+        </div>
+
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#waitlist">Join the Waitlist</a>
+          <a class="btn btn-secondary" href="#faq">Read the FAQ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="mobile-reserve" href="#waitlist">
+    <span aria-hidden="true">🎫</span>
+    Join the Waitlist
+  </a>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+  <footer>
+    <div class="footer-brand">
+      <span class="mini-furnace" aria-hidden="true"></span>
+      <span>FORGE SERVERS</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#choose">Choose a Server</a>
+      <a href="#process">How It Works</a>
+      <a href="#inside-forge">Availability</a>
+      <a href="#waitlist">Join Waitlist</a>
+      <a href="#policies">Policies</a>
+      <a data-forge-onboarding href="./onboarding.html">Customer Setup</a>
+<a href="#faq">Help</a>
+<a
+  data-forge-status href="./status.html"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  🟢 Live Status
+</a>
+<a data-forge-discord href="https://discord.gg/hSxWKUySJY" target="_blank" rel="noopener noreferrer">Discord</a>
+    </div>
+
+    <p>© <span id="year">2026</span> Forge Servers. Independent Minecraft server rental project.</p>
+    <span class="build-mark">BUILD 17.0 · LAUNCH SYSTEM</span>
+  </footer>
+
+  <script>
+    "use strict";
+
+    /*
+     * PUBLIC OPERATIONS FALLBACK
+     * The live site first loads ./forge-operations.json.
+     * These values are used only if that file cannot be reached.
+     */
+    const FORGE_PUBLIC_FALLBACK = Object.freeze({
+      inventory: Object.freeze({
+        starterAvailable: 2,
+        standardAvailable: 1,
+        moddedAvailable: 0,
+        beingForged: 1
+      }),
+      discordInvite: "https://discord.gg/hSxWKUySJY",
+      statusPage: "./status.html",
+      onboardingPage: "./onboarding.html",
+      operationsData: "./forge-operations.json",
+      lastUpdated: "2026-07-30T00:56:00-04:00"
+    });
+
+    let forgePublicConfig = {
+      ...FORGE_PUBLIC_FALLBACK,
+      inventory: { ...FORGE_PUBLIC_FALLBACK.inventory }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const progressBar = document.getElementById("progressBar");
+      const header = document.getElementById("siteHeader");
+      const menuButton = document.getElementById("menuButton");
+      const nav = document.getElementById("mainNav");
+      const backToTop = document.getElementById("backToTop");
+      const emberField = document.getElementById("emberField");
+      const furnace = document.getElementById("heroFurnace");
+      const forgeStage = document.getElementById("forgeStage");
+      const forgeReaction = document.getElementById("forgeReaction");
+      const year = document.getElementById("year");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const finePointer = window.matchMedia("(pointer: fine)").matches;
+
+      const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+      };
+
+      const applyPublicConfig = (config = forgePublicConfig) => {
+        const inventory = config.inventory;
+        const available =
+          inventory.starterAvailable +
+          inventory.standardAvailable +
+          inventory.moddedAvailable;
+        const totalUnits = available + inventory.beingForged;
+        const serverWord = available === 1 ? "server" : "servers";
+        const starterWord = inventory.starterAvailable === 1 ? "server" : "servers";
+        const standardWord = inventory.standardAvailable === 1 ? "server" : "servers";
+
+        setText(
+          "heroAvailabilityText",
+          available > 0
+            ? `Only ${available} ${serverWord} available right now`
+            : "No servers available right now · waitlist remains open"
+        );
+        setText("quickAvailableCount", `${available} ${serverWord}`);
+        setText(
+          "inventorySummary",
+          `${available} available now · ${inventory.beingForged} being forged`
+        );
+        setText(
+          "opsCapacity",
+          `${available} ${serverWord} available`
+        );
+        setText(
+          "opsCapacityDetail",
+          `${inventory.starterAvailable} Starter and ${inventory.standardAvailable} Standard available across ${totalUnits} total Forge units.`
+        );
+        setText(
+          "starterAvailabilityBadge",
+          inventory.starterAvailable > 0
+            ? `${inventory.starterAvailable} AVAILABLE`
+            : "WAITLIST ONLY"
+        );
+        setText(
+          "starterAvailabilitySpec",
+          `${inventory.starterAvailable} ${starterWord}`
+        );
+        setText(
+          "standardAvailabilityBadge",
+          inventory.standardAvailable > 0
+            ? `RECOMMENDED · ${inventory.standardAvailable} AVAILABLE`
+            : "RECOMMENDED · WAITLIST ONLY"
+        );
+        setText(
+          "standardAvailabilitySpec",
+          `${inventory.standardAvailable} ${standardWord}`
+        );
+        setText(
+          "faqAvailabilityAnswer",
+          `There are currently ${available} available ${serverWord}: ${inventory.starterAvailable} Starter and ${inventory.standardAvailable} Standard. ${inventory.beingForged} additional unit is being forged.`
+        );
+
+        document.querySelectorAll("[data-forge-discord]").forEach((link) => {
+          link.href = config.discordInvite;
+        });
+
+        document.querySelectorAll("[data-forge-status]").forEach((link) => {
+          link.href = config.statusPage;
+        });
+
+        document.querySelectorAll("[data-forge-onboarding]").forEach((link) => {
+          link.href = config.onboardingPage;
+        });
+
+        const updated = config.lastUpdated ? new Date(config.lastUpdated) : null;
+        setText(
+          "operationsLastUpdated",
+          updated && !Number.isNaN(updated.getTime())
+            ? `Central inventory updated ${updated.toLocaleString()}`
+            : "Central inventory loaded"
+        );
+      };
+
+      const loadCentralOperations = async () => {
+        try {
+          const url = `${forgePublicConfig.operationsData}?v=${Date.now()}`;
+          const response = await fetch(url, { cache: "no-store" });
+          if (!response.ok) throw new Error(`Operations file returned ${response.status}`);
+
+          const payload = await response.json();
+          const incomingInventory = payload && typeof payload.inventory === "object"
+            ? payload.inventory
+            : {};
+
+          forgePublicConfig = {
+            ...forgePublicConfig,
+            ...payload,
+            inventory: {
+              ...forgePublicConfig.inventory,
+              ...incomingInventory
+            }
+          };
+
+          applyPublicConfig(forgePublicConfig);
+        } catch (error) {
+          applyPublicConfig(forgePublicConfig);
+          setText("operationsLastUpdated", "Using embedded inventory fallback");
+          console.warn("Forge operations file was not loaded:", error);
+        }
+      };
+
+      applyPublicConfig(forgePublicConfig);
+      loadCentralOperations();
+
+      document.addEventListener("visibilitychange", () => {
+        document.body.classList.toggle("page-paused", document.hidden);
+      });
+
+      if (year) {
+        year.textContent = String(new Date().getFullYear());
+      }
+
+      if (emberField && !reduceMotion) {
+        const fragment = document.createDocumentFragment();
+
+        const emberCount =
+          window.innerWidth <= 650 ? 16 :
+          window.innerWidth <= 980 ? 26 :
+          38;
+
+        for (let index = 0; index < emberCount; index += 1) {
+          const ember = document.createElement("span");
+          ember.className = "ember";
+          ember.style.setProperty("--x", `${Math.random() * 100}%`);
+          ember.style.setProperty("--size", `${2 + Math.random() * 4}px`);
+          ember.style.setProperty("--time", `${5.5 + Math.random() * 6}s`);
+          ember.style.setProperty("--delay", `${Math.random() * -11}s`);
+          ember.style.setProperty("--drift", `${-90 + Math.random() * 180}px`);
+          fragment.appendChild(ember);
+        }
+
+        emberField.appendChild(fragment);
+      }
+
+      const updateScrollUI = () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const percentage = total > 0 ? Math.min(100, (window.scrollY / total) * 100) : 0;
+
+        if (progressBar) {
+          progressBar.style.width = `${percentage}%`;
+        }
+
+        if (header) {
+          header.classList.toggle("scrolled", window.scrollY > 24);
+        }
+
+        if (backToTop) {
+          backToTop.classList.toggle("visible", window.scrollY > 650);
+        }
+      };
+
+      window.addEventListener("scroll", updateScrollUI, { passive: true });
+      updateScrollUI();
+
+      if (menuButton && nav) {
+        menuButton.addEventListener("click", () => {
+          const isOpen = nav.classList.toggle("open");
+          menuButton.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        nav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            nav.classList.remove("open");
+            menuButton.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      if (backToTop) {
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: reduceMotion ? "auto" : "smooth"
+          });
+        });
+      }
+
+      if (furnace && forgeStage && finePointer && !reduceMotion) {
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let pointerFrame = 0;
+
+        const easeFurnacePointer = () => {
+          currentX += (targetX - currentX) * 0.075;
+          currentY += (targetY - currentY) * 0.075;
+          furnace.style.translate = `${currentX.toFixed(2)}px ${currentY.toFixed(2)}px`;
+
+          if (
+            Math.abs(targetX - currentX) > 0.04 ||
+            Math.abs(targetY - currentY) > 0.04
+          ) {
+            pointerFrame = window.requestAnimationFrame(easeFurnacePointer);
+          } else {
+            pointerFrame = 0;
+          }
+        };
+
+        const requestPointerFrame = () => {
+          if (!pointerFrame) {
+            pointerFrame = window.requestAnimationFrame(easeFurnacePointer);
+          }
+        };
+
+        forgeStage.addEventListener("pointermove", (event) => {
+          const rect = forgeStage.getBoundingClientRect();
+          targetX = (((event.clientX - rect.left) / rect.width) - 0.5) * 16;
+          targetY = (((event.clientY - rect.top) / rect.height) - 0.5) * 9;
+          requestPointerFrame();
+        });
+
+        forgeStage.addEventListener("pointerleave", () => {
+          targetX = 0;
+          targetY = 0;
+          requestPointerFrame();
+        });
+      }
+
+      let stokeTimer = 0;
+      let reactionTimer = 0;
+
+      const stokeForge = () => {
+        if (!furnace || !forgeStage) return;
+
+        window.clearTimeout(stokeTimer);
+        window.clearTimeout(reactionTimer);
+        furnace.classList.add("is-stoked");
+
+        if (forgeReaction) {
+          forgeReaction.classList.add("is-active");
+          const strong = forgeReaction.querySelector("strong");
+          const small = forgeReaction.querySelector("small");
+
+          if (strong) strong.textContent = "Forge heating smoothly";
+          if (small) small.textContent = "Preparing your next world";
+        }
+
+        if (!reduceMotion) {
+          const burst = document.createDocumentFragment();
+
+          for (let index = 0; index < 8; index += 1) {
+            const spark = document.createElement("span");
+            spark.className = "forge-click-spark smooth-spark";
+            spark.style.setProperty("--spark-x", `${-85 + Math.random() * 170}px`);
+            spark.style.setProperty("--spark-y", `${-95 - Math.random() * 85}px`);
+            spark.style.setProperty("--spark-delay", `${Math.random() * 0.18}s`);
+            burst.appendChild(spark);
+
+            window.setTimeout(() => spark.remove(), 1450);
+          }
+
+          forgeStage.appendChild(burst);
+        }
+
+        stokeTimer = window.setTimeout(() => {
+          furnace.classList.remove("is-stoked");
+        }, 900);
+
+        reactionTimer = window.setTimeout(() => {
+          if (!forgeReaction) return;
+          forgeReaction.classList.remove("is-active");
+          const strong = forgeReaction.querySelector("strong");
+          const small = forgeReaction.querySelector("small");
+          if (strong) strong.textContent = "Tap the furnace";
+          if (small) small.textContent = "Stoke the forge";
+        }, 1500);
+      };
+
+      if (furnace) {
+        furnace.addEventListener("click", stokeForge);
+
+        furnace.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            stokeForge();
+          }
+        });
+      }
+
+
+      /*
+       * Public Google Apps Script web-app URL.
+       * Private Discord secrets remain in Apps Script properties.
+       */
+      const WAITLIST_BACKEND_URL = "https://script.google.com/macros/s/AKfycbwrlIyapigp11Ua6VtOgkTUVgpmlJxptiPMcRe4XqzRqsxMoyWPysiZNSRE9hMSSnFD6w/exec";
+
+      const waitlistForm = document.getElementById("waitlistForm");
+      const waitlistSubmit = document.getElementById("waitlistSubmit");
+      const waitlistMessage = document.getElementById("waitlistMessage");
+      const waitlistCount = document.getElementById("waitlistCount");
+      const waitlistList = document.getElementById("waitlistList");
+      const backendState = document.getElementById("backendState");
+
+      const backendConfigured = (
+        WAITLIST_BACKEND_URL.startsWith("https://script.google.com/") &&
+        WAITLIST_BACKEND_URL.endsWith("/exec")
+      );
+
+      /*
+       * ChatGPT's embedded preview requires permission for every external
+       * request. Live backend calls are therefore enabled only on the
+       * published GitHub Pages website.
+       */
+      const isPublishedWebsite =
+        window.location.hostname === "aircho2159.github.io";
+
+      const setBackendState = (state, message) => {
+        if (backendState) {
+          backendState.classList.remove("connected", "error");
+          if (state) backendState.classList.add(state);
+          const text = backendState.querySelector("span");
+          if (text) text.textContent = message;
+        }
+
+        const opsWaitlistStatus =
+          document.getElementById("opsWaitlistStatus");
+        const opsWaitlistDot =
+          document.getElementById("opsWaitlistDot");
+
+        if (opsWaitlistStatus) {
+          opsWaitlistStatus.textContent =
+            state === "connected" ? "Live and connected" :
+            state === "error" ? "Temporarily unavailable" :
+            message;
+        }
+
+        if (opsWaitlistDot) {
+          opsWaitlistDot.classList.remove("connected", "error");
+          if (state) opsWaitlistDot.classList.add(state);
+        }
+      };
+
+      const setWaitlistMessage = (message, type = "") => {
+        if (!waitlistMessage) return;
+        waitlistMessage.textContent = message;
+        waitlistMessage.className = `waitlist-message ${type}`.trim();
+      };
+
+      const createWaitlistEntry = (entry) => {
+        const item = document.createElement("li");
+        item.className = "waitlist-entry";
+
+        const position = document.createElement("span");
+        position.className = "waitlist-position";
+        position.textContent = `#${entry.position}`;
+
+        const nameWrap = document.createElement("div");
+        nameWrap.className = "waitlist-name";
+
+        const name = document.createElement("strong");
+        name.textContent = entry.name || "Private player";
+
+        const detail = document.createElement("span");
+        detail.textContent = "Minecraft player";
+        nameWrap.append(name, detail);
+
+        const plan = document.createElement("span");
+        plan.className = "waitlist-plan";
+        plan.textContent = entry.plan || "Either";
+
+        item.append(position, nameWrap, plan);
+        return item;
+      };
+
+      const renderWaitlist = (payload) => {
+        if (!waitlistList || !waitlistCount) return;
+
+        const entries = Array.isArray(payload.entries) ? payload.entries : [];
+        waitlistCount.textContent = String(payload.count ?? entries.length);
+        waitlistList.textContent = "";
+
+        if (entries.length === 0) {
+          const empty = document.createElement("li");
+          empty.className = "waitlist-empty";
+          empty.textContent = "Nobody is waiting yet. You could be first in line.";
+          waitlistList.appendChild(empty);
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        entries.forEach((entry) => fragment.appendChild(createWaitlistEntry(entry)));
+        waitlistList.appendChild(fragment);
+      };
+
+      const loadWaitlist = () => {
+        if (!backendConfigured) {
+          if (waitlistCount) waitlistCount.textContent = "0";
+          if (waitlistList) {
+            waitlistList.innerHTML =
+              '<li class="waitlist-empty">The waitlist backend is not connected.</li>';
+          }
+          setBackendState("error", "Backend setup required");
+          return;
+        }
+
+        const callbackName =
+          `forgeWaitlist_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
+        const script = document.createElement("script");
+        let finished = false;
+
+        const cleanup = () => {
+          if (finished) return;
+          finished = true;
+          delete window[callbackName];
+          script.remove();
+        };
+
+        const timeout = window.setTimeout(() => {
+          cleanup();
+          setBackendState("error", "Could not load waitlist");
+        }, 9000);
+
+        window[callbackName] = (payload) => {
+          window.clearTimeout(timeout);
+          cleanup();
+
+          if (!payload || payload.ok !== true) {
+            setBackendState("error", payload?.message || "Waitlist unavailable");
+            return;
+          }
+
+          renderWaitlist(payload);
+          setBackendState("connected", "Live and connected");
+        };
+
+        script.onerror = () => {
+          window.clearTimeout(timeout);
+          cleanup();
+          setBackendState("error", "Could not load waitlist");
+        };
+
+        const query = new URLSearchParams({
+          action: "list",
+          callback: callbackName,
+          t: String(Date.now())
+        });
+
+        script.src = `${WAITLIST_BACKEND_URL}?${query.toString()}`;
+        document.head.appendChild(script);
+      };
+
+      const showOAuthResult = () => {
+        const currentUrl = new URL(window.location.href);
+        const status = currentUrl.searchParams.get("waitlist");
+        if (!status) return;
+
+        if (status === "success") {
+          const position = currentUrl.searchParams.get("position");
+          const plan = currentUrl.searchParams.get("plan");
+          const positionText = position ? `Position #${position}` : "Position confirmed";
+          const planText = plan ? ` · ${plan} server` : "";
+
+          setWaitlistMessage(
+            `You're officially in the Forge. ${positionText}${planText}. Forge Staff will contact you through Discord when a server is ready.`,
+            "success"
+          );
+
+          if (waitlistForm) {
+            waitlistForm.reset();
+            const publicCheckbox = document.getElementById("publicDisplay");
+            if (publicCheckbox) publicCheckbox.checked = true;
+          }
+
+          window.setTimeout(loadWaitlist, 350);
+        } else {
+          const message = currentUrl.searchParams.get("message");
+          setWaitlistMessage(
+            message || "Discord verification could not be completed.",
+            "error"
+          );
+        }
+
+        const cleanUrl =
+          `${currentUrl.origin}${currentUrl.pathname}#waitlist`;
+        window.history.replaceState({}, document.title, cleanUrl);
+      };
+
+      const finderChoices = document.querySelectorAll(".finder-choice");
+      const finderResult = document.getElementById("finderResult");
+      const finderResultIcon = document.getElementById("finderResultIcon");
+      const finderResultTitle = document.getElementById("finderResultTitle");
+      const finderResultText = document.getElementById("finderResultText");
+      const finderPlanAction = document.getElementById("finderPlanAction");
+      const finderDiscordAction = document.getElementById("finderDiscordAction");
+
+      const finderRecommendations = {
+        starter: {
+          icon: "🔥",
+          title: "Starter — Ember Tier — $5/month",
+          text: "Best for 1–5 players. It allows up to 10 players, but five or fewer is recommended for fast gameplay.",
+          plan: "Starter"
+        },
+        standard: {
+          icon: "⚡",
+          title: "Standard — Blaze Tier — $10/month",
+          text: "Recommended for 6–20 players for fast gameplay. The server supports up to 25 players maximum, but performance may be less consistent near that limit.",
+          plan: "Standard"
+        },
+        mods: {
+          icon: "🧩",
+          title: "Wait for the 12 GB Inferno Tier",
+          text: "Mods are allowed on current servers, but they are not recommended. The coming 12 GB plan is intended for Forge, Fabric, and larger modpacks.",
+          discord: true
+        }
+      };
+
+      finderChoices.forEach((choice) => {
+        choice.addEventListener("click", () => {
+          const recommendation = finderRecommendations[choice.dataset.choice];
+          if (!recommendation) return;
+
+          finderChoices.forEach((item) => {
+            const selected = item === choice;
+            item.classList.toggle("selected", selected);
+            item.setAttribute("aria-pressed", String(selected));
+          });
+
+          if (finderResult) finderResult.classList.add("has-result");
+          if (finderResultIcon) finderResultIcon.textContent = recommendation.icon;
+          if (finderResultTitle) finderResultTitle.textContent = recommendation.title;
+          if (finderResultText) finderResultText.textContent = recommendation.text;
+
+          if (finderPlanAction) {
+            finderPlanAction.hidden = Boolean(recommendation.discord);
+            if (recommendation.plan) {
+              finderPlanAction.dataset.plan = recommendation.plan;
+              finderPlanAction.textContent = `Choose ${recommendation.plan}`;
+            }
+          }
+
+          if (finderDiscordAction) {
+            finderDiscordAction.hidden = !recommendation.discord;
+          }
+        });
+      });
+
+      const planSelectButtons =
+        document.querySelectorAll(".plan-select");
+
+      planSelectButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+
+          const selectedPlan = button.dataset.plan;
+          const waitlistSection = document.getElementById("waitlist");
+          const planField = document.getElementById("waitlistPlan");
+          const usernameField = document.getElementById("minecraftUsername");
+
+          if (planField && selectedPlan) {
+            planField.value = selectedPlan;
+            planField.dispatchEvent(
+              new Event("change", { bubbles: true })
+            );
+          }
+
+          if (waitlistSection) {
+            waitlistSection.scrollIntoView({
+              behavior: reduceMotion ? "auto" : "smooth",
+              block: "start"
+            });
+          }
+
+          window.setTimeout(() => {
+            if (usernameField) {
+              usernameField.focus({ preventScroll: true });
+            }
+          }, reduceMotion ? 0 : 650);
+        });
+      });
+
+      if (waitlistForm) {
+        waitlistForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          setWaitlistMessage("");
+
+          if (!backendConfigured) {
+            setWaitlistMessage(
+              "The waitlist backend has not been connected yet.",
+              "error"
+            );
+            return;
+          }
+
+          if (!isPublishedWebsite) {
+            setWaitlistMessage(
+              "Preview mode: publish this index.html on GitHub to test Discord verification.",
+              "error"
+            );
+            return;
+          }
+
+          if (!waitlistForm.reportValidity()) return;
+
+          const minecraftUsername =
+            waitlistForm.elements.minecraftUsername.value.trim();
+          const plan = waitlistForm.elements.plan.value;
+          const publicDisplay =
+            waitlistForm.elements.publicDisplay.checked ? "yes" : "no";
+          const usernamePattern = /^[A-Za-z0-9_. -]{2,32}$/;
+
+          if (!usernamePattern.test(minecraftUsername)) {
+            setWaitlistMessage("Enter a valid Minecraft username.", "error");
+            return;
+          }
+
+          const query = new URLSearchParams({
+            action: "discord-login",
+            minecraftUsername,
+            plan,
+            publicDisplay
+          });
+
+          if (waitlistSubmit) {
+            waitlistSubmit.disabled = true;
+            waitlistSubmit.textContent = "Opening Discord…";
+          }
+
+          setWaitlistMessage(
+            "Opening Discord so your account can be verified…"
+          );
+
+          window.location.assign(
+            `${WAITLIST_BACKEND_URL}?${query.toString()}`
+          );
+        });
+      }
+
+      if (isPublishedWebsite) {
+        showOAuthResult();
+        loadWaitlist();
+      } else {
+        if (waitlistCount) {
+          waitlistCount.textContent = "—";
+        }
+
+        if (waitlistList) {
+          waitlistList.innerHTML =
+            '<li class="waitlist-empty">Preview mode — the live waitlist loads after this file is published on GitHub.</li>';
+        }
+
+        setBackendState("", "Preview mode — no network request");
+      }
+
+      const revealElements = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window && !reduceMotion) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach((element, index) => {
+          element.style.setProperty("--delay", `${Math.min((index % 6) * 65, 325)}ms`);
+          revealObserver.observe(element);
+        });
+      } else {
+        revealElements.forEach((element) => element.classList.add("visible"));
+      }
+
+      const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
+      const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      if ("IntersectionObserver" in window && sections.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+          if (!visible) {
+            return;
+          }
+
+          navLinks.forEach((link) => {
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === `#${visible.target.id}`
+            );
+          });
+        }, {
+          rootMargin: "-32% 0px -55% 0px",
+          threshold: [0.01, 0.15, 0.4]
+        });
+
+        sections.forEach((section) => navObserver.observe(section));
+      }
+    });
+  </script>
+</body>
+</html>
