@@ -1,0 +1,16 @@
+{
+  "inventory": {
+    "starterAvailable": 2,
+    "standardAvailable": 1,
+    "moddedAvailable": 0,
+    "beingForged": 1
+  },
+  "discordInvite": "https://discord.gg/hSxWKUySJY",
+  "statusPage": "./status.html",
+  "onboardingPage": "./onboarding.html",
+  "lastUpdated": "2026-07-30T00:56:00-04:00",
+  "incident": {
+    "state": "none",
+    "message": "No public incident is currently posted."
+  }
+}
